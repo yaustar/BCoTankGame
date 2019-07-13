@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using CommandTerminal;
 using SmartData.SmartLeaderboardTableData;
 using UnityEngine;
+
+#if BUILD_DEBUG
+using CommandTerminal;
+#endif
 
 
 namespace TankGame {
@@ -45,6 +48,7 @@ namespace TankGame {
             PlayerPrefs.SetString(PREF_LEADERBOARD_TABLE_DATA, JsonUtility.ToJson(_leaderboardTableDataSvar.value));
             PlayerPrefs.Save();
         }
+        
         
 #if BUILD_DEBUG
         private void DebugCommandAddHighScore(CommandArg[] args) {
