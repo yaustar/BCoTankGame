@@ -43,3 +43,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 801525b6bb0b2934cbaf38a59f1b33c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _leaderboardTableDataSvar:
+    _owner: {fileID: 937466245462314735}
+    _propertyPath: _leaderboardTableDataSvar
+    _autoListen: 0
+    _multiIndex: 0
+    _refType: 2
+    _value:
+      table: []
+    _smartConst: {fileID: 0}
+    _smartVar: {fileID: 11400000, guid: 26101f47362c90a40a603256455aa5e1, type: 2}
+    _smartMulti: {fileID: 0}
+    _onUpdate:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: SmartData.SmartLeaderboardTableData.Data.LeaderboardTableDataVar+LeaderboardTableDataEvent,
+        Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
