@@ -36,8 +36,10 @@ namespace TankGame {
             var table = _leaderboardTableDataSvar.value.table;
             table.Add(scoreEntry);
             table.Sort();
+            
+            // Scores are sorted ascending
             if (table.Count > MAX_ENTRIES) {
-                table.RemoveRange(MAX_ENTRIES, table.Count - MAX_ENTRIES);
+                table.RemoveRange(0, table.Count - MAX_ENTRIES);
             }
 
             SaveToDevice();
