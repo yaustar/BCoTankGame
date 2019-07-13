@@ -1,9 +1,9 @@
 - [x] Add global scene for game and debug
 - [x] Create the basic game loop so we can transition from one scene to another
-- [ ] Add high score controller in global 
-	- [ ] Add Svar for high score data table
-	- [ ] Have it save/load as JSON to a PlayerPref
-	- [ ] Add debug command to clear and submit new scores
+- [x] Add high score controller in global 
+	- [x] Add Svar for high score data table
+	- [x] Have it save/load as JSON to a PlayerPref
+	- [x] Add debug command to clear and submit new scores
 - [ ] Add player lives logic as end condition for game
 - [ ] Add score that can be changed via debug command
 - [ ] Check if score at end of game can go on the high score board
