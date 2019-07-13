@@ -1,5 +1,5 @@
 - [x] Add global scene for game and debug
-- [ ] Create the basic game loop so we can transition from one scene to another
+- [x] Create the basic game loop so we can transition from one scene to another
 - [ ] Add high score controller in global 
 	- [ ] Add Svar for high score data table
 	- [ ] Have it save/load as JSON to a PlayerPref
