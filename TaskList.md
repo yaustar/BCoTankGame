@@ -1,0 +1,26 @@
+- [x] Add global scene for game and debug
+- [ ] Create the basic game loop so we can transition from one scene to another
+- [ ] Add high score controller in global 
+	- [ ] Add Svar for high score data table
+	- [ ] Have it save/load as JSON to a PlayerPref
+	- [ ] Add debug command to clear and submit new scores
+- [ ] Add player lives logic as end condition for game
+- [ ] Add score that can be changed via debug command
+- [ ] Check if score at end of game can go on the high score board
+- [ ] If there is a new high score, ask for players name via keyboard 
+- [ ] Add flow that if high score is submitted, it goes to the high score board with the score submitted being highlighted else shows game over screen
+- [ ] Add player controller interface for the tank
+- [ ] Add basic scoring mechanic for destroying enemy tanks
+- [ ] Add spawning of enemy tanks
+- [ ] Connect enemy tanks left to destruction of enemy tanks
+- [ ] Add level changes when all tanks are destroyed
+- [ ] Add destructable terrain (?)
+- [ ] Add some basic move AI controller to the tanks (first pass)
+- [ ] Allow the player to shoot via the controller (what's the reload limit?)
+- [ ] Make the tanks shoot randomly
+- [ ] Have end condition that if the base is destroyed, the game ends too
+- [ ] Add an extra weapon type that allows the player tank to drop mines
+	- [ ] Connect extra button to this
+	- [ ] Have mine arm when player has left the square (bomberman style)
+	- [ ] Enforce a limit / reload 
+	- [ ] Explode when any tank collides with it
