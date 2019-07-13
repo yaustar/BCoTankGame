@@ -6,6 +6,7 @@
 	- [x] Add debug command to clear and submit new scores
 - [x] Add player lives logic as end condition for game
 - [ ] Add score that can be changed via debug command
+- [ ] Add end of game UI that shows the score
 - [ ] Check if score at end of game can go on the high score board
 - [ ] If there is a new high score, ask for players name via keyboard 
 - [ ] Add flow that if high score is submitted, it goes to the high score board with the score submitted being highlighted else shows game over screen
