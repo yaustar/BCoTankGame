@@ -270,7 +270,7 @@ PrefabInstance:
     - target: {fileID: 787148470204377822, guid: 5f6f9a4d668fa66488c09b5851c5dc9b,
         type: 3}
       propertyPath: m_Name
-      value: MainMenuController
+      value: MainMenuScene
       objectReference: {fileID: 0}
     - target: {fileID: 508819560992024717, guid: 5f6f9a4d668fa66488c09b5851c5dc9b,
         type: 3}

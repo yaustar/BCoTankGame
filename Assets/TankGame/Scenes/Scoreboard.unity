@@ -270,7 +270,7 @@ PrefabInstance:
     - target: {fileID: 7306127354848125965, guid: 2e0c87951c0b8a44db0cf56a1530f684,
         type: 3}
       propertyPath: m_Name
-      value: LeaderboardController
+      value: LeaderBoardScene
       objectReference: {fileID: 0}
     - target: {fileID: 6805583578906151494, guid: 2e0c87951c0b8a44db0cf56a1530f684,
         type: 3}
