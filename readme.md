@@ -15,4 +15,8 @@ SmartData isn't perfect and wouldn't use it in a Production environment as both 
 
 However, as it's the closest Open Source framework to my own, I'm using it for the test as the runtime logic seems to work fine.
 
-Ideally, I would like to try ZenInject, Entitas or DOTs but haven't yet used them in a signifcant capactity so I'm sticking with what I know due to time constraints.
+The downside of this approach is that it is very Editor which can make it difficult to follow logic flow from code to Editor and back as well as being restrictive with automated testing (it has to be done via the Editor).
+
+Upsides include that it is more of a 'Unity' way of implementing features and logic so requires less of working around Unity itself and taking advantage of tool features.
+
+Ideally, I would like to explore ZenInject, Entitas or DOTs but haven't yet used them in a signifcant capactity so I'm sticking with what I know due to time constraints.
