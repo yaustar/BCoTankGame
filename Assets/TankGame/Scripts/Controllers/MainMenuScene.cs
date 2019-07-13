@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 
 namespace TankGame {
-    public class MainMenuController : MonoBehaviour {
+    public class MainMenuScene : MonoBehaviour {
 
         // Start is called before the first frame update
         void Start() {

@@ -5,7 +5,7 @@ using UnityEngine.Events;
 
 
 namespace TankGame {
-    public class LeaderboardController : MonoBehaviour {
+    public class LeaderboardScene : MonoBehaviour {
         [SerializeField]
         private UnityEvent _showMainMenuEvent;
         

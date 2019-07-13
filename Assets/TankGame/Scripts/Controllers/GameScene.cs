@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 
 namespace TankGame {
-    public class GameController : MonoBehaviour {
+    public class GameScene : MonoBehaviour {
         [SerializeField]
         private UnityEvent _showMainMenuEvent;
         

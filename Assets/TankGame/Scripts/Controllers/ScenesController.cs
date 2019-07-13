@@ -6,15 +6,7 @@ using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
 namespace TankGame {
-    public class SceneController : MonoBehaviour {
-        public UnityEvent _event;
-        
-        private void Update() {
-            if (Input.GetKeyDown(KeyCode.K)) {
-                _event.Invoke();
-            }
-        }
-        
+    public class ScenesController : MonoBehaviour {
 
         // Public callbacks
         public void OnStartGame() {
