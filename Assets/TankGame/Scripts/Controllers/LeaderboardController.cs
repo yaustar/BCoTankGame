@@ -17,6 +17,7 @@ namespace TankGame {
         private LeaderboardTableDataWriter _leaderboardTableDataSvar;
 
 
+
         private void Awake() {
             var json = PlayerPrefs.GetString(PREF_LEADERBOARD_TABLE_DATA, "");
             _leaderboardTableDataSvar.value = JsonUtility.FromJson<LeaderboardTableData>(json) ?? new LeaderboardTableData();
@@ -24,11 +25,18 @@ namespace TankGame {
 #if BUILD_DEBUG
             Terminal.Shell.AddCommand("AddHighScore", DebugCommandAddHighScore, 2, 2);
             Terminal.Shell.AddCommand("ClearLeaderboardTable", DebugCommandClearTable, 0, 0);
-#endif // BUILD_DEBUG           
-            
+#endif
         }
+
         
-        
+        private void OnDestroy() {
+#if BUILD_DEBUG
+            Terminal.Shell.RemoveCommand("AddHighScore");
+            Terminal.Shell.RemoveCommand("ClearLeaderboardTable");
+#endif            
+        }
+
+
         // Private
         private void AddScoreToTable(ScoreEntryData scoreEntry) {
             const int MAX_ENTRIES = 10;

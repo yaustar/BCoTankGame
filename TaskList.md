@@ -4,7 +4,7 @@
 	- [x] Add Svar for high score data table
 	- [x] Have it save/load as JSON to a PlayerPref
 	- [x] Add debug command to clear and submit new scores
-- [ ] Add player lives logic as end condition for game
+- [x] Add player lives logic as end condition for game
 - [ ] Add score that can be changed via debug command
 - [ ] Check if score at end of game can go on the high score board
 - [ ] If there is a new high score, ask for players name via keyboard 
