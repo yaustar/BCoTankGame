@@ -7,8 +7,9 @@
 - [x] Add player lives logic as end condition for game
 - [x] Add score that can be changed via debug command
 - [ ] Hook up the UI for the lives 
-- [ ] Hook up the UI for the score
+- [x] Hook up the UI for the score
 - [ ] Update the highest score UI in the main game 
+- [ ] Leaderboard should reflect the high scores made in the game
 - [ ] Add end of game UI that shows the score
 - [ ] Check if score at end of game can go on the high score board
 - [ ] If there is a new high score, ask for players name via keyboard 
