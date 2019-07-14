@@ -1,9 +1,9 @@
 ## Libraries used
-* (SmartData)[https://github.com/sigtrapgames/SmartData] - A 'data' inversion framework that's orientated around designer use in the Editor and based off the talk ('Unite Austin 2017 - Game Architecture with Scriptable Objects
-)[https://www.youtube.com/watch?v=raQ3iHhE_Kk]. 
-* (NaughtyAttrbiutes)[https://github.com/dbrizov/NaughtyAttributes] - Attributes to add extra functionality to the inspector
-* (CommandTerminal)[https://github.com/stillwwater/command_terminal] - Quake like dropdown console to allow for debug commands. Examples of use here was to change scores, add/remove high scores on the leaderboard. Normally I use Touch Console Pro instead of this open source alternative
-* (QuickSearch)[https://github.com/appetizermonster/Unity3D-QuickSearch] - Editor tool to have search on a hot key
+* [SmartData](https://github.com/sigtrapgames/SmartData) - A 'data' inversion framework that's orientated around designer use in the Editor and based off the talk ['Unite Austin 2017 - Game Architecture with Scriptable Objects
+](https://www.youtube.com/watch?v=raQ3iHhE_Kk). 
+* [NaughtyAttrbiutes](https://github.com/dbrizov/NaughtyAttributes) - Attributes to add extra functionality to the inspector
+* [CommandTerminal](https://github.com/stillwwater/command_terminal) - Quake like dropdown console to allow for debug commands. Examples of use here was to change scores, add/remove high scores on the leaderboard. Normally I use Touch Console Pro instead of this open source alternative
+* [QuickSearch](https://github.com/appetizermonster/Unity3D-QuickSearch) - Editor tool to have search on a hot key
 
 
 ## Extra notes
