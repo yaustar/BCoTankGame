@@ -6,7 +6,7 @@
 	- [x] Add debug command to clear and submit new scores
 - [x] Add player lives logic as end condition for game
 - [x] Add score that can be changed via debug command
-- [ ] Hook up the UI for the lives 
+- [x] Hook up the UI for the lives 
 - [x] Hook up the UI for the score
 - [ ] Update the highest score UI in the main game 
 - [ ] Leaderboard should reflect the high scores made in the game

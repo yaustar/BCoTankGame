@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using NaughtyAttributes;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -11,23 +12,22 @@ using CommandTerminal;
 
 namespace TankGame {
     public class GameScene : MonoBehaviour {
-        [SerializeField]
+        [SerializeField, BoxGroup("Events")]
         private UnityEvent _showMainMenuEvent;
         
-        [SerializeField]
+        [SerializeField, BoxGroup("Events")]
         private UnityEvent _showLeaderboardEvent;
 
-        [SerializeField]
+        [SerializeField, BoxGroup("Svars")]
         private SmartData.SmartInt.IntReader  _playerLivesMaxConst;
         
-        [SerializeField]
+        [SerializeField, BoxGroup("Svars")]
         private SmartData.SmartInt.IntWriter _playerLivesCountSvar;
 
-        [SerializeField]
+        [SerializeField, BoxGroup("Svars")]
         private SmartData.SmartInt.IntWriter _playerScoreSvar;
 
 
-        // Start is called before the first frame update
         void Awake() {
         }
 
