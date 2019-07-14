@@ -9,8 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0b3a67f8ea85f1a41abb26c03a218953, type: 3}
-  m_Name: PlayerDiedEvent
+  m_Script: {fileID: 11500000, guid: ade39c96d6897a74b8a1742e28a56c98, type: 3}
+  m_Name: PlayerScoreSvar
   m_EditorClassIdentifier: 
   _description: 
   _decorators: []
+  _resetOnSceneChange: 0
+  _dataType: 1
+  _value: 0
+  _runtimeValue: 0

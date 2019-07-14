@@ -23,16 +23,22 @@ namespace TankGame {
         [SerializeField]
         private SmartData.SmartInt.IntWriter _playerLivesCountSvar;
 
+        [SerializeField]
+        private SmartData.SmartInt.IntWriter _playerScoreSvar;
+
 
         // Start is called before the first frame update
         void Awake() {
-            _playerLivesCountSvar.value = _playerLivesMaxConst.value;
         }
 
 
         void Start() {
+            _playerLivesCountSvar.value = _playerLivesMaxConst.value;
+            _playerScoreSvar.value = 0;
+            
 #if BUILD_DEBUG
-            Terminal.Shell.AddCommand("ReducePlayerLives", DebugCommandReducePlayerLives, 1, 1);
+            Terminal.Shell.AddCommand("ReduceLives", DebugCommandReducePlayerLives, 1, 1);
+            Terminal.Shell.AddCommand("AddScore", DebugCommandAddScore, 1, 1);
 #endif
         }
 
@@ -40,6 +46,7 @@ namespace TankGame {
         private void OnDestroy() {
 #if BUILD_DEBUG
             Terminal.Shell.RemoveCommand("ReducePlayerLives");
+            Terminal.Shell.RemoveCommand("AddScore");
 #endif            
         }
 
@@ -69,7 +76,12 @@ namespace TankGame {
             for (int i = 0; i < args[0].Int && _playerLivesCountSvar.value > 0; ++i) {
                 OnPlayerDeath();
             }
-        } 
+        }
+
+
+        private void DebugCommandAddScore(CommandArg[] args) {
+            _playerScoreSvar.value += args[0].Int;
+        }
 #endif 
     }
 }

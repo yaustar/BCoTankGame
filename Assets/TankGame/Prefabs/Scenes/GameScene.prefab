@@ -106,6 +106,21 @@ MonoBehaviour:
         m_Calls: []
       m_TypeName: SmartData.SmartInt.Data.IntVar+IntEvent, Assembly-CSharp, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
+  _playerScoreSvar:
+    _owner: {fileID: 746298162175381129}
+    _propertyPath: _playerScoreSvar
+    _autoListen: 0
+    _multiIndex: 0
+    _refType: 2
+    _value: 0
+    _smartConst: {fileID: 0}
+    _smartVar: {fileID: 11400000, guid: 6dfc3d575e3d85145a5ddd98daeeca75, type: 2}
+    _smartMulti: {fileID: 0}
+    _onUpdate:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: SmartData.SmartInt.Data.IntVar+IntEvent, Assembly-CSharp, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
 --- !u!114 &6325211640101858924
 MonoBehaviour:
   m_ObjectHideFlags: 0
