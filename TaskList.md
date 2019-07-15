@@ -20,7 +20,7 @@
 - [x] Make walls collideable by the tanks
 - [ ] Add basic scoring mechanic for destroying enemy tanks
 - [ ] Add spawning of enemy tanks
-- [ ] Connect enemy tanks left to destruction of enemy tanks
+- [ ] Connect enemy tanks left UI to destruction of enemy tanks
 - [ ] Add level changes when all tanks are destroyed
 - [ ] Add destructable terrain (?)
 - [ ] Add some basic move AI controller to the tanks (first pass)
