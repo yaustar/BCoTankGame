@@ -549,7 +549,7 @@ PrefabInstance:
     - target: {fileID: 3863904546586940325, guid: 1f04168c61f25434890d9562615854a4,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 76.4
       objectReference: {fileID: 0}
     - target: {fileID: 2196880166493287603, guid: 1f04168c61f25434890d9562615854a4,
         type: 3}
@@ -669,7 +669,7 @@ PrefabInstance:
     - target: {fileID: 7959727472678759490, guid: 1f04168c61f25434890d9562615854a4,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 76.4
       objectReference: {fileID: 0}
     - target: {fileID: 5013944131694971732, guid: 1f04168c61f25434890d9562615854a4,
         type: 3}
@@ -789,7 +789,7 @@ PrefabInstance:
     - target: {fileID: 2791161931404219892, guid: 1f04168c61f25434890d9562615854a4,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 76.4
       objectReference: {fileID: 0}
     - target: {fileID: 963639017458053858, guid: 1f04168c61f25434890d9562615854a4,
         type: 3}
@@ -909,7 +909,7 @@ PrefabInstance:
     - target: {fileID: 8604082189200387858, guid: 1f04168c61f25434890d9562615854a4,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 76.4
       objectReference: {fileID: 0}
     - target: {fileID: 6666573485113329668, guid: 1f04168c61f25434890d9562615854a4,
         type: 3}
@@ -1029,7 +1029,7 @@ PrefabInstance:
     - target: {fileID: 2650094417878815193, guid: 1f04168c61f25434890d9562615854a4,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 76.4
       objectReference: {fileID: 0}
     - target: {fileID: 1091204528160880335, guid: 1f04168c61f25434890d9562615854a4,
         type: 3}
@@ -1149,7 +1149,7 @@ PrefabInstance:
     - target: {fileID: 1148038657309878405, guid: 1f04168c61f25434890d9562615854a4,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 76.4
       objectReference: {fileID: 0}
     - target: {fileID: 2597764970655846291, guid: 1f04168c61f25434890d9562615854a4,
         type: 3}
@@ -1269,7 +1269,7 @@ PrefabInstance:
     - target: {fileID: 11772107810679646, guid: 1f04168c61f25434890d9562615854a4,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 76.4
       objectReference: {fileID: 0}
     - target: {fileID: 3155449674998615112, guid: 1f04168c61f25434890d9562615854a4,
         type: 3}
@@ -1389,7 +1389,7 @@ PrefabInstance:
     - target: {fileID: 7147165036527338549, guid: 1f04168c61f25434890d9562615854a4,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 76.4
       objectReference: {fileID: 0}
     - target: {fileID: 5245689515979825955, guid: 1f04168c61f25434890d9562615854a4,
         type: 3}
@@ -1509,7 +1509,7 @@ PrefabInstance:
     - target: {fileID: 7333178070939442064, guid: 1f04168c61f25434890d9562615854a4,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 76.4
       objectReference: {fileID: 0}
     - target: {fileID: 5631492896747011206, guid: 1f04168c61f25434890d9562615854a4,
         type: 3}
@@ -1629,7 +1629,7 @@ PrefabInstance:
     - target: {fileID: 623449021864842511, guid: 1f04168c61f25434890d9562615854a4,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 76.4
       objectReference: {fileID: 0}
     - target: {fileID: 2541532108282376729, guid: 1f04168c61f25434890d9562615854a4,
         type: 3}
@@ -1719,6 +1719,16 @@ PrefabInstance:
     - target: {fileID: 830866175810654115, guid: 1f04168c61f25434890d9562615854a4,
         type: 3}
       propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1497738837261010083, guid: 1f04168c61f25434890d9562615854a4,
+        type: 3}
+      propertyPath: m_ChildControlHeight
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1497738837261010083, guid: 1f04168c61f25434890d9562615854a4,
+        type: 3}
+      propertyPath: m_ChildForceExpandHeight
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
