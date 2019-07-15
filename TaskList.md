@@ -35,3 +35,4 @@
 	- [ ] Have mine arm when player has left the square (bomberman style)
 	- [ ] Enforce a limit / reload 
 	- [ ] Explode when any tank collides with it
+- [ ] When player dies, have it respawn back one of two bases positions (check that it area is free before spawning, or cheat by destroying whatever is at spawn position)
