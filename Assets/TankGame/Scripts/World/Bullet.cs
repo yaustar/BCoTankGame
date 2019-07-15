@@ -29,8 +29,14 @@ namespace TankGame {
                 Destroy(this.gameObject);
             }
         }
-        
-        
+
+
+        private void OnCollisionEnter2D(Collision2D other) {
+            // Stub change for using a pool manager later
+            Destroy(this.gameObject);
+        }
+
+
         // Public API
         public void Set(Direction direction) {
             var velocity = new Vector3();

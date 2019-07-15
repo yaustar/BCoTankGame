@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2384597057518741696}
   - component: {fileID: 9019949368193829118}
   - component: {fileID: 4657274909595686838}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: TankPlayer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -113,7 +113,7 @@ GameObject:
   - component: {fileID: 5429160592906700897}
   - component: {fileID: 5137019794091839596}
   - component: {fileID: 1705128543462396980}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -210,7 +210,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2576201858153201334}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: BulletSpawnPosition
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -240,7 +240,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3185953451189991951}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: SpriteRoot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
