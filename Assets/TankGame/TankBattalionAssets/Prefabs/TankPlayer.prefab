@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1970096382293713030}
   - component: {fileID: 2384597057518741696}
   - component: {fileID: 9019949368193829118}
-  - component: {fileID: 4657274909595686838}
+  - component: {fileID: 959062613}
   m_Layer: 12
   m_Name: TankPlayer
   m_TagString: Untagged
@@ -86,8 +86,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!58 &4657274909595686838
-CircleCollider2D:
+--- !u!61 &959062613
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -99,9 +99,19 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.03}
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
   serializedVersion: 2
-  m_Radius: 0.68
+  m_Size: {x: 1.2, y: 1.2}
+  m_EdgeRadius: 0.15
 --- !u!1 &2143813181462942069
 GameObject:
   m_ObjectHideFlags: 0
