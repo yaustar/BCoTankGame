@@ -7,7 +7,8 @@ namespace TankGame {
         public int score = 0;
 
         public int CompareTo(ScoreEntryData other) {
-            return this.score.CompareTo(other.score);
+            // Sort descending
+            return other.score.CompareTo(this.score);
         }
     }
 }

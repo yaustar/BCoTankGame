@@ -8,7 +8,8 @@
 - [x] Add score that can be changed via debug command
 - [x] Hook up the UI for the lives 
 - [x] Hook up the UI for the score
-- [ ] Update the highest score UI in the main game 
+- [x] Update the highest score UI in the main game 
+- [ ] Add a default high score if there are none in storage
 - [ ] Leaderboard should reflect the high scores made in the game
 - [ ] Add end of game UI that shows the score
 - [ ] Check if score at end of game can go on the high score board

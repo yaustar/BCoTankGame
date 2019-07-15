@@ -21,7 +21,15 @@ namespace TankGame {
         private void Awake() {
             var json = PlayerPrefs.GetString(PREF_LEADERBOARD_TABLE_DATA, "");
             _leaderboardTableDataSvar.value = JsonUtility.FromJson<LeaderboardTableData>(json) ?? new LeaderboardTableData();
+
+            // Have at least one default entry on the leaderboard
+            var table = _leaderboardTableDataSvar.value.table;
+            if (table.Count == 0) {
+                AddDefaultScoreEntry();
+            }
             
+            table.Sort();
+
 #if BUILD_DEBUG
             Terminal.Shell.AddCommand("AddHighScore", DebugCommandAddHighScore, 2, 2);
             Terminal.Shell.AddCommand("ClearLeaderboardTable", DebugCommandClearTable, 0, 0);
@@ -45,9 +53,9 @@ namespace TankGame {
             table.Add(scoreEntry);
             table.Sort();
             
-            // Scores are sorted ascending
+            // Scores are sorted descending
             if (table.Count > MAX_ENTRIES) {
-                table.RemoveRange(0, table.Count - MAX_ENTRIES);
+                table.RemoveRange(table.Count, table.Count - MAX_ENTRIES);
             }
 
             SaveToDevice();
@@ -57,6 +65,12 @@ namespace TankGame {
         private void SaveToDevice() {
             PlayerPrefs.SetString(PREF_LEADERBOARD_TABLE_DATA, JsonUtility.ToJson(_leaderboardTableDataSvar.value));
             PlayerPrefs.Save();
+        }
+
+
+        private void AddDefaultScoreEntry() {
+            var table = _leaderboardTableDataSvar.value.table;
+            AddScoreToTable(new ScoreEntryData(){name = "Bravo Company", score = 100});
         }
         
         
@@ -73,6 +87,7 @@ namespace TankGame {
         private void DebugCommandClearTable(CommandArg[] args) {
             var table = _leaderboardTableDataSvar.value.table;
             table.Clear();
+            AddDefaultScoreEntry();
             SaveToDevice();
         }
 #endif // BUILD_DEBUG
