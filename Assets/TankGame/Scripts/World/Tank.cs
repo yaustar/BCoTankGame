@@ -23,10 +23,15 @@ namespace TankGame {
         private ITankInput _input;
         private bool _movingLastFrame = false;
         private Direction _facingDirection = Direction.Up;
+
+        private ObjectPool _bulletObjectPool;
+        
         
         private void Awake() {
             _rigidbody2D = GetComponent<Rigidbody2D>();
             _input = GetComponent<ITankInput>();
+
+            _bulletObjectPool = new ObjectPool(_bulletPrefab, gameObject, 10);
         }
 
 
@@ -87,10 +92,16 @@ namespace TankGame {
 
 
                 if (_input.HasAttemptedFired()) {
-                    var obj = Instantiate(_bulletPrefab, transform.parent, false);
-                    var bullet = obj.GetComponent<Bullet>();
-                    obj.transform.position = _bulletSpawnTransform.position;
-                    bullet.Set(_facingDirection);
+                    var bulletObj = _bulletObjectPool.GetObject();
+                    bulletObj.transform.SetParent(transform.parent);
+                    var bullet = bulletObj.GetComponent<Bullet>();
+                    bulletObj.transform.position = _bulletSpawnTransform.position;
+
+                    bulletObj.SetActive(true);
+                    
+                    bullet.Set(_facingDirection, (GameObject obj) => {
+                        _bulletObjectPool.ReturnObject(obj);
+                    });
                 }
             }
         }

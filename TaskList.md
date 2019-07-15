@@ -24,8 +24,10 @@
 - [ ] Add level changes when all tanks are destroyed
 - [ ] Add destructable terrain (?)
 - [ ] Add some basic move AI controller to the tanks (first pass)
-- [ ] Allow the player to shoot via the controller (what's the reload limit?)
+- [ ] Allow the player to shoot via the controller
+    - [x] Be able to fire bullets 
     - [ ] Add a UI element to show the main shot being related
+    - [ ] Add a fire rate limit
 - [ ] Make the tanks shoot randomly
 - [ ] Have end condition that if the base is destroyed, the game ends too
 - [ ] Add an extra weapon type that allows the player tank to drop land mines

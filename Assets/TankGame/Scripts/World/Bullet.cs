@@ -16,6 +16,8 @@ namespace TankGame {
         private Rigidbody2D _rigidbody2D;
         private float _secsSinceSpawned = 0f;
 
+        private Action<GameObject> _deadCallback;
+
 
         private void Awake() {
             _rigidbody2D = GetComponent<Rigidbody2D>();
@@ -25,20 +27,18 @@ namespace TankGame {
         private void Update() {
             _secsSinceSpawned += Time.deltaTime;
             if (_secsSinceSpawned > _lifeTimeSecs) {
-                // Stub change for using a pool manager later
-                Destroy(this.gameObject);
+                OnDead();
             }
         }
 
 
         private void OnCollisionEnter2D(Collision2D other) {
-            // Stub change for using a pool manager later
-            Destroy(this.gameObject);
+            OnDead();
         }
 
 
         // Public API
-        public void Set(Direction direction) {
+        public void Set(Direction direction, Action<GameObject> destroyCallback) {
             var velocity = new Vector3();
 
             switch (direction) {
@@ -66,8 +66,19 @@ namespace TankGame {
             }
 
             velocity *= _speed;
-            
+
+            _secsSinceSpawned = 0f;
             _rigidbody2D.velocity = velocity;
+            _deadCallback = destroyCallback;
+        }
+
+
+        private void OnDead() {
+            if (_deadCallback != null) {
+                _deadCallback(gameObject);
+            } else {
+                Destroy(gameObject);
+            }
         }
     }
 }
