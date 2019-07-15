@@ -14,8 +14,10 @@
 - [ ] Add end of game UI that shows the score
 - [ ] Check if score at end of game can go on the high score board
 - [ ] If there is a new high score, ask for players name via keyboard 
-- [ ] Add flow that if high score is submitted, it goes to the high score board with the score submitted being highlighted else shows game over screen
-- [ ] Add player controller interface for the tank
+- [ ] Add end screen game UI with a button to go back to main menu
+- [ ] Add button to return to main menu from Leaderboard 
+- [x] Add player controller interface for the tank
+- [ ] Make walls collideable by the tanks
 - [ ] Add basic scoring mechanic for destroying enemy tanks
 - [ ] Add spawning of enemy tanks
 - [ ] Connect enemy tanks left to destruction of enemy tanks
@@ -23,9 +25,10 @@
 - [ ] Add destructable terrain (?)
 - [ ] Add some basic move AI controller to the tanks (first pass)
 - [ ] Allow the player to shoot via the controller (what's the reload limit?)
+    - [ ] Add a UI element to show the main shot being related
 - [ ] Make the tanks shoot randomly
 - [ ] Have end condition that if the base is destroyed, the game ends too
-- [ ] Add an extra weapon type that allows the player tank to drop mines
+- [ ] Add an extra weapon type that allows the player tank to drop land mines
 	- [ ] Connect extra button to this
 	- [ ] Have mine arm when player has left the square (bomberman style)
 	- [ ] Enforce a limit / reload 
