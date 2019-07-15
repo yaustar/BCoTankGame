@@ -6,7 +6,7 @@ namespace TankGame {
         
         
         // Public API
-        public InputDirection GetDirection() {
+        public Direction GetDirection() {
             // Use the standard Unity input for the moment
             // If we have a button remapper in the game, we can change this logic
             
@@ -20,25 +20,29 @@ namespace TankGame {
                 if (Mathf.Abs(joyAxis.x) > Mathf.Abs(joyAxis.y)) {
                     // Horizontal
                     if (joyAxis.x > 0) {
-                        return InputDirection.Right;
+                        return Direction.Right;
                     } else {
-                        return InputDirection.Left;
+                        return Direction.Left;
                     }
                 } else {
                     // Vertical
                     if (joyAxis.y > 0) {
-                        return InputDirection.Up;
+                        return Direction.Up;
                     } else {
-                        return InputDirection.Down;
+                        return Direction.Down;
                     }
                 }
             }
 
-            return InputDirection.None;
+            return Direction.None;
         }
 
 
         public bool HasAttemptedFired() {
+            if (Input.GetButtonDown("Fire")) {
+                return true;
+            }
+            
             return false;
         }
     }

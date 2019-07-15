@@ -50,6 +50,9 @@ MonoBehaviour:
   _maxSpeed: 4
   _spriteRoot: {fileID: 3185953451189991951}
   _animator: {fileID: 1705128543462396980}
+  _bulletPrefab: {fileID: 6364090647265773742, guid: 2dd8eb4aeecfa4ec585c70a83c49dc8c,
+    type: 3}
+  _bulletSpawnTransform: {fileID: 2576201858153201334}
 --- !u!114 &2384597057518741696
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -198,6 +201,36 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!1 &6156505211816439649
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2576201858153201334}
+  m_Layer: 0
+  m_Name: BulletSpawnPosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2576201858153201334
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6156505211816439649}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.287, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3185953451189991951}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8672951099489029161
 GameObject:
   m_ObjectHideFlags: 0
@@ -226,6 +259,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 5429160592906700897}
+  - {fileID: 2576201858153201334}
   m_Father: {fileID: 945963923562605936}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

@@ -12,11 +12,17 @@ namespace TankGame {
         [SerializeField]
         private Animator _animator;
 
+        [SerializeField]
+        private GameObject _bulletPrefab;
+
+        [SerializeField]
+        private Transform _bulletSpawnTransform;
+        
 
         private Rigidbody2D _rigidbody2D;
         private ITankInput _input;
-        private bool _movingLastFrame = false; 
-
+        private bool _movingLastFrame = false;
+        private Direction _facingDirection = Direction.Up;
         
         private void Awake() {
             _rigidbody2D = GetComponent<Rigidbody2D>();
@@ -24,7 +30,7 @@ namespace TankGame {
         }
 
 
-        private void FixedUpdate() {
+        private void Update() {
             if (_input != null) {
                 var direction = _input.GetDirection();
                 var velocity = new Vector3();
@@ -32,25 +38,25 @@ namespace TankGame {
                 var localRot = _spriteRoot.localEulerAngles;
                 
                 switch (direction) {
-                    case InputDirection.Down: {
+                    case Direction.Down: {
                         velocity.y = -1f;
-                        localRot.z = 180f;        
+                        localRot.z = 180f;
                         break;
                     }
                         
-                    case InputDirection.Up: {
+                    case Direction.Up: {
                         velocity.y = 1f;
                         localRot.z = 0f;
                         break;
                     }
                     
-                    case InputDirection.Left: {
+                    case Direction.Left: {
                         velocity.x = -1f;
                         localRot.z = 90f;
                         break;
                     }
                     
-                    case InputDirection.Right: {
+                    case Direction.Right: {
                         velocity.x = 1f;
                         localRot.z = 270f;
                         break;
@@ -64,11 +70,12 @@ namespace TankGame {
                 
                 _spriteRoot.localEulerAngles = localRot;
 
-                if (direction != InputDirection.None) {
+                if (direction != Direction.None) {
                     if (!_movingLastFrame) {
                         _animator.Play("Moving");
                     }
-                    
+
+                    _facingDirection = direction;
                     _movingLastFrame = true;
                 } else {
                     if (_movingLastFrame) {
@@ -76,6 +83,14 @@ namespace TankGame {
                     }
                     
                     _movingLastFrame = false;
+                }
+
+
+                if (_input.HasAttemptedFired()) {
+                    var obj = Instantiate(_bulletPrefab, transform.parent, false);
+                    var bullet = obj.GetComponent<Bullet>();
+                    obj.transform.position = _bulletSpawnTransform.position;
+                    bullet.Set(_facingDirection);
                 }
             }
         }
