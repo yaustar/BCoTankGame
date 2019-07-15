@@ -24,7 +24,7 @@ namespace TankGame {
         }
 
 
-        private void Update() {
+        private void FixedUpdate() {
             if (_input != null) {
                 var direction = _input.GetDirection();
                 var velocity = new Vector3();
