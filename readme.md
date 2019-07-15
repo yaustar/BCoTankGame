@@ -19,4 +19,4 @@ The downside of this approach is that it is very Editor which can make it diffic
 
 Upsides include that it is more of a 'Unity' way of implementing features and logic so requires less of working around Unity itself and taking advantage of tool features.
 
-Ideally, I would like to explore ZenInject, Entitas or DOTs but haven't yet used them in a signifcant capactity so I'm sticking with what I know due to time constraints.
+Ideally, I would like to explore ZenInject, Entitas or DOTs but haven't yet used them in a signifcant capactity so I'm sticking with what I know due to time constraints. I really want to investigate into DOD with Unity as I have trouble understanding the how to 'glue' between the data and the visuals.
