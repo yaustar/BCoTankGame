@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 945963923562605936}
   - component: {fileID: 945963923562605939}
   - component: {fileID: 7330856152563663868}
+  - component: {fileID: 1970096382293713030}
+  - component: {fileID: 2384597057518741696}
   m_Layer: 0
   m_Name: TankPlayer
   m_TagString: Untagged
@@ -99,3 +101,28 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1970096382293713030
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 945963923562605938}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff8ac1fd6528410a9db1d85a73442ace, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _maxSpeed: 4
+--- !u!114 &2384597057518741696
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 945963923562605938}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71abf79c87e64623b5994aa06e431807, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
