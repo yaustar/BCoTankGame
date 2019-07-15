@@ -8,7 +8,16 @@
 
 ## Extra notes
 
+### Features were tested with the Command Terminal
+
+Using the Command Terminal, I was able to test features in the game easily without needing to add the game logic. This includes checking the game UI was being updated correctly (e.g Player lives) and adding/removing high scores in the leaderboard. 
+
+Press the ` key and type help for the commands. Search the code base for "DebugCommand" for the functions that are tied to the commands.
+
+Command Terminal isn't the most user friendly of terminals for an end user and Touch Console Pro is much better allowing for descriptions and default values for the arguments.
+
 ### Jusitifications on SmartData
+
 I have my own framework in place of SmartData based on the same talk but involves the use of other libraries such as OdinInspector for some functionality and therefore couldn't use it for this test. 
 
 SmartData isn't perfect and wouldn't use it in a Production environment as both the release and the GitHub repo have bugs (e.g the dispatch button on the SmartEvent in the inspector doesn't work) that have been addressed by the team but haven't yet been made public on the repo.

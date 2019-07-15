@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 namespace TankGame {
     public class Tank : MonoBehaviour {
@@ -17,7 +18,7 @@ namespace TankGame {
 
         [SerializeField]
         private Transform _bulletSpawnTransform;
-        
+
 
         private Rigidbody2D _rigidbody2D;
         private ITankInput _input;
@@ -90,6 +91,7 @@ namespace TankGame {
                     _movingLastFrame = false;
                 }
 
+                
 
                 if (_input.HasAttemptedFired()) {
                     var bulletObj = _bulletObjectPool.GetObject();
