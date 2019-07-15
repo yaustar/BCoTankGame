@@ -17,7 +17,7 @@
 - [ ] Add end screen game UI with a button to go back to main menu
 - [ ] Add button to return to main menu from Leaderboard 
 - [x] Add player controller interface for the tank
-- [ ] Make walls collideable by the tanks
+- [x] Make walls collideable by the tanks
 - [ ] Add basic scoring mechanic for destroying enemy tanks
 - [ ] Add spawning of enemy tanks
 - [ ] Connect enemy tanks left to destruction of enemy tanks
