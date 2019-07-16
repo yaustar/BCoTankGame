@@ -4,7 +4,7 @@ using NaughtyAttributes;
 using SmartData.SmartLevelState;
 using UnityEngine;
 using UnityEngine.Events;
-
+using UnityEngine.Serialization;
 #if BUILD_DEBUG
 using CommandTerminal;
 #endif
@@ -40,6 +40,12 @@ namespace TankGame {
 
         [SerializeField, BoxGroup("Svars")]
         private LevelStateWriter _levelStateSvar;
+
+        [FormerlySerializedAs("_maxEnemiesToSpawnSvar")] [SerializeField, BoxGroup("Svars")]
+        private SmartData.SmartInt.IntWriter _maxEnemiesThisLevelToSpawnSvar;
+        
+        [SerializeField, BoxGroup("Svars")]
+        private SmartData.SmartInt.IntWriter _enemiesLeftThisLevelSvar;
 
         [SerializeField]
         private int _pointsPerTankDestroyed = 10;
@@ -87,6 +93,7 @@ namespace TankGame {
 
         public void OnEnemyDeath() {
             _playerScoreSvar.value += _pointsPerTankDestroyed;
+            _enemiesLeftThisLevelSvar.value = Mathf.Max(_enemiesLeftThisLevelSvar.value - 1, 0);
         }
 
 
@@ -103,6 +110,8 @@ namespace TankGame {
 
 
         private IEnumerator StartLevelInXSecs() {
+            _enemiesLeftThisLevelSvar.value = _maxEnemiesThisLevelToSpawnSvar.value;
+            
             var wait = new WaitForSeconds(1f);
             yield return wait;
 

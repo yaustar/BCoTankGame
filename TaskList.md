@@ -18,8 +18,8 @@
 - [x] Add player controller interface for the tank
 - [x] Make walls collideable by the tanks
 - [x] Add basic scoring mechanic for destroying enemy tanks
-- [ ] Add spawning of enemy tanks
-- [ ] Connect enemy tanks left UI to destruction of enemy tanks
+- [x] Add spawning of enemy tanks
+- [x] Connect enemy tanks left UI to destruction of enemy tanks
 - [ ] Add level changes when all tanks are destroyed
     - [ ] Update hud UI in game
     - [ ] Show level number at start of level

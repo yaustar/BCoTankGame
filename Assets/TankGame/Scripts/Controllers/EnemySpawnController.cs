@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using NaughtyAttributes;
 using SmartData.SmartLevelState;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
 namespace TankGame {
@@ -16,8 +17,8 @@ namespace TankGame {
         [SerializeField, BoxGroup("Svars")]
         private LevelStateReader _levelStateSvar;
 
-        [SerializeField, BoxGroup("Svars")]
-        private SmartData.SmartInt.IntReader _maxEnemiesToSpawnSvar;
+        [FormerlySerializedAs("_maxEnemiesToSpawnSvar")] [SerializeField, BoxGroup("Svars")]
+        private SmartData.SmartInt.IntReader _maxEnemiesThisLevelToSpawnSvar;
 
         [SerializeField, MinMaxSlider(0f, 10f)]
         private Vector2 _randomSpawnTimeRange;
@@ -37,7 +38,7 @@ namespace TankGame {
             _secsToNextSpawn -= Time.deltaTime;
             
             if (_levelStateSvar.value == LevelState.InProgress) {
-                if (_secsToNextSpawn <= 0f && _enemiesSpawnedThisLevel < _maxEnemiesToSpawnSvar.value) {
+                if (_secsToNextSpawn <= 0f && _enemiesSpawnedThisLevel < _maxEnemiesThisLevelToSpawnSvar.value) {
                     AttemptSpawn();
                 }
             }

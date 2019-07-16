@@ -184,6 +184,36 @@ MonoBehaviour:
         m_Calls: []
       m_TypeName: SmartData.SmartLevelState.Data.LevelStateVar+LevelStateEvent, Assembly-CSharp,
         Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  _maxEnemiesThisLevelToSpawnSvar:
+    _owner: {fileID: 746298162175381129}
+    _propertyPath: _maxEnemiesThisLevelToSpawnSvar
+    _autoListen: 0
+    _multiIndex: 0
+    _refType: 2
+    _value: 0
+    _smartConst: {fileID: 0}
+    _smartVar: {fileID: 11400000, guid: a9b51e46477b3fc43873e01a2a1d2ff6, type: 2}
+    _smartMulti: {fileID: 0}
+    _onUpdate:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: SmartData.SmartInt.Data.IntVar+IntEvent, Assembly-CSharp, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+  _enemiesLeftThisLevelSvar:
+    _owner: {fileID: 746298162175381129}
+    _propertyPath: _enemiesLeftThisLevelSvar
+    _autoListen: 0
+    _multiIndex: 0
+    _refType: 2
+    _value: 0
+    _smartConst: {fileID: 0}
+    _smartVar: {fileID: 11400000, guid: ca6f0fc70267ae446819896789314c2f, type: 2}
+    _smartMulti: {fileID: 0}
+    _onUpdate:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: SmartData.SmartInt.Data.IntVar+IntEvent, Assembly-CSharp, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
   _pointsPerTankDestroyed: 100
 --- !u!114 &6325211640101858924
 MonoBehaviour:
