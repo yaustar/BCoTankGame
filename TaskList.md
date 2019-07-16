@@ -10,11 +10,10 @@
 - [x] Hook up the UI for the score
 - [x] Update the highest score UI in the main game 
 - [x] Add a default high score if there are none in storage
-- [ ] Leaderboard should reflect the high scores made in the game
-- [ ] Add end of game UI that shows the score
-- [ ] Check if score at end of game can go on the high score board
-- [ ] If there is a new high score, ask for players name via keyboard 
-- [ ] Add end screen game UI with a button to go back to main menu
+- [x] Leaderboard should reflect the high scores made in the game
+- [x] Check if score at end of game can go on the high score board
+- [x] If there is a new high score, ask for players name via keyboard 
+- [x] Add end screen game UI with a button to go back to main menu
 - [x] Add button to return to main menu from Leaderboard 
 - [x] Add player controller interface for the tank
 - [x] Make walls collideable by the tanks
