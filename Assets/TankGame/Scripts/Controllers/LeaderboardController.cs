@@ -47,7 +47,7 @@ namespace TankGame {
 
         // Private
         private void AddScoreToTable(ScoreEntryData scoreEntry) {
-            const int MAX_ENTRIES = 10;
+            const int MAX_ENTRIES = LeaderboardTableData.MAX_ENTRIES;
             
             var table = _leaderboardTableDataSvar.value.table;
             table.Add(scoreEntry);
@@ -55,7 +55,7 @@ namespace TankGame {
             
             // Scores are sorted descending
             if (table.Count > MAX_ENTRIES) {
-                table.RemoveRange(table.Count, table.Count - MAX_ENTRIES);
+                table.RemoveRange(MAX_ENTRIES, table.Count - MAX_ENTRIES);
             }
 
             SaveToDevice();
