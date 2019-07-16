@@ -14,7 +14,7 @@
 - [ ] Add end of game UI that shows the score
 - [ ] Check if score at end of game can go on the high score board
 - [ ] If there is a new high score, ask for players name via keyboard 
-- [ ] Add end screen game UI with a button to go back to main menu
+- [x] Add end screen game UI with a button to go back to main menu
 - [ ] Add button to return to main menu from Leaderboard 
 - [x] Add player controller interface for the tank
 - [x] Make walls collideable by the tanks
