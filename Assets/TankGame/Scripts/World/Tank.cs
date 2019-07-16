@@ -21,13 +21,14 @@ namespace TankGame {
         private float _maxSpeed;
 
         [SerializeField, BoxGroup("Properties")]
-        private float _mainWeaponReloadTimeSecs;        
+        private float _gunReloadTimeSecs;        
 
         
         private Rigidbody2D _rigidbody2D;
         private ITankInput _input;
         private bool _movingLastFrame = false;
         private Direction _facingDirection = Direction.Up;
+        private float _secsTimeSinceGunFired = float.MaxValue;
 
         
         // Should this be managed by an external manager/controller?
@@ -45,6 +46,8 @@ namespace TankGame {
 
 
         private void Update() {
+            _secsTimeSinceGunFired += Time.deltaTime;
+            
             if (_input != null) {
                 var direction = _input.GetDirection();
                 var velocity = new Vector3();
@@ -98,10 +101,8 @@ namespace TankGame {
                     
                     _movingLastFrame = false;
                 }
-
                 
-
-                if (_input.HasAttemptedFired()) {
+                if (_input.HasAttemptedFired() && _secsTimeSinceGunFired >= _gunReloadTimeSecs) {
                     var bulletObj = _bulletObjectPool.GetObject();
                     bulletObj.transform.SetParent(transform.parent);
                     var bullet = bulletObj.GetComponent<Bullet>();
@@ -118,6 +119,8 @@ namespace TankGame {
                             _bulletObjectPool.ReturnObject(obj);
                         }
                     });
+
+                    _secsTimeSinceGunFired = 0f;
                 }
             }
         }
