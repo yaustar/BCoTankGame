@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3621347657319311099}
   - component: {fileID: 937466245462314735}
+  - component: {fileID: 3435123164987667857}
   m_Layer: 0
   m_Name: LeaderboardController
   m_TagString: Untagged
@@ -59,3 +60,15 @@ MonoBehaviour:
         m_Calls: []
       m_TypeName: SmartData.SmartLeaderboardTableData.Data.LeaderboardTableDataVar+LeaderboardTableDataEvent,
         Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+--- !u!114 &3435123164987667857
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1958112028979280480}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c86c76a46918e824086ca158f9f1e184, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
