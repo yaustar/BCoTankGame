@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using SmartData.SmartLeaderboardTableData;
+using SmartData.SmartScoreEntryData;
 using UnityEngine;
 
 #if BUILD_DEBUG
@@ -16,6 +17,8 @@ namespace TankGame {
         [SerializeField]
         private LeaderboardTableDataWriter _leaderboardTableDataSvar;
 
+        [SerializeField]
+        private ScoreEntryDataReader _lastHighScoreEntryAchievedSvar;
 
 
         private void Awake() {
@@ -42,6 +45,12 @@ namespace TankGame {
             Terminal.Shell.RemoveCommand("AddHighScore");
             Terminal.Shell.RemoveCommand("ClearLeaderboardTable");
 #endif            
+        }
+        
+        
+        // Public callbacks 
+        public void OnNewHighScoreAchieved() {
+            AddScoreToTable(_lastHighScoreEntryAchievedSvar.value);
         }
 
 

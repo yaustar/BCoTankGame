@@ -17,6 +17,9 @@ namespace TankGame {
         
         [SerializeField, BoxGroup("Events")]
         private UnityEvent _showLeaderboardEvent;
+        
+        [SerializeField, BoxGroup("Events")]
+        private UnityEvent _gameEndEvent;
 
         [SerializeField, BoxGroup("Svars")]
         private SmartData.SmartInt.IntReader  _playerLivesMaxConst;
@@ -26,8 +29,8 @@ namespace TankGame {
 
         [SerializeField, BoxGroup("Svars")]
         private SmartData.SmartInt.IntWriter _playerScoreSvar;
-
-
+        
+        
         void Awake() {
         }
 
@@ -63,15 +66,13 @@ namespace TankGame {
         public void OnPlayerDeath() {
             _playerLivesCountSvar.value -= 1;
             if (_playerLivesCountSvar.value == 0) {
-                // Game over stub: Go back to main menu
-                _showMainMenuEvent.Invoke();
+                _gameEndEvent.Invoke();
             }
         }
 
 
         public void OnBaseTropyDestroyed() {
-            // TODO Show end screen 
-            _showMainMenuEvent.Invoke();
+            _gameEndEvent.Invoke();
         }
         
         

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3621347657319311099}
   - component: {fileID: 937466245462314735}
   - component: {fileID: 3435123164987667857}
+  - component: {fileID: 7995968018114811753}
   m_Layer: 0
   m_Name: LeaderboardController
   m_TagString: Untagged
@@ -60,6 +61,23 @@ MonoBehaviour:
         m_Calls: []
       m_TypeName: SmartData.SmartLeaderboardTableData.Data.LeaderboardTableDataVar+LeaderboardTableDataEvent,
         Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  _lastHighScoreEntryAchievedSvar:
+    _owner: {fileID: 937466245462314735}
+    _propertyPath: _lastHighScoreEntryAchievedSvar
+    _autoListen: 0
+    _multiIndex: 0
+    _refType: 2
+    _value:
+      name: 
+      score: 0
+    _smartConst: {fileID: 0}
+    _smartVar: {fileID: 11400000, guid: dc884dab2ecf7a64c8ced13bc7afccd2, type: 2}
+    _smartMulti: {fileID: 0}
+    _onUpdate:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: SmartData.SmartScoreEntryData.Data.ScoreEntryDataVar+ScoreEntryDataEvent,
+        Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
 --- !u!114 &3435123164987667857
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -72,3 +90,39 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c86c76a46918e824086ca158f9f1e184, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &7995968018114811753
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1958112028979280480}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93f1e525436345d4897593aa0ab32e26, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _data:
+  - _owner: {fileID: 7995968018114811753}
+    _propertyPath: _data.Array.data[0]
+    _autoListen: 0
+    _multiIndex: 0
+    _smartEvent: {fileID: 11400000, guid: 100eec5780f7a9145a1ba1f9c851a3ec, type: 2}
+    _smartMulti: {fileID: 0}
+    _useMulti: 0
+    _onEvent:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 937466245462314735}
+          m_MethodName: OnNewHighScoreAchieved
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
