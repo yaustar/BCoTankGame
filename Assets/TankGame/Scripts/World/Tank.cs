@@ -5,7 +5,7 @@ using UnityEngine.Tilemaps;
 using UnityEngine.UI;
 
 namespace TankGame {
-    public class Tank : MonoBehaviour {
+    public class Tank : MonoBehaviour, IGun {
         [SerializeField, BoxGroup("References")]
         private Transform _spriteRoot;
         
@@ -17,11 +17,7 @@ namespace TankGame {
         
         [SerializeField, BoxGroup("References")]
         private Transform _bulletSpawnTransform;
-
-        // Normally I have an optional attribute tag with another asset that I use
-        [SerializeField, BoxGroup("Optional References")]
-        private Image _gunReloadSliderUi;
-
+        
         [SerializeField, BoxGroup("Properties")]
         private float _maxSpeed;
 
@@ -128,6 +124,17 @@ namespace TankGame {
                     _secsTimeSinceGunFired = 0f;
                 }
             }
+        }
+        
+        
+        // Public API
+        public float GetReloadTimeSecs() {
+            return _gunReloadTimeSecs;
+        }
+
+
+        public float GetSecSinceLastFired() {
+            return _secsTimeSinceGunFired;
         }
     }
 }
