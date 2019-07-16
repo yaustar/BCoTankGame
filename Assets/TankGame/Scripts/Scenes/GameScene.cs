@@ -68,6 +68,12 @@ namespace TankGame {
                 _showMainMenuEvent.Invoke();
             }
         }
+
+
+        public void OnBaseTropyDestroyed() {
+            // TODO Show end screen 
+            _showMainMenuEvent.Invoke();
+        }
         
         
         // Private
