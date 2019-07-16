@@ -1,30 +1,38 @@
 using System;
+using NaughtyAttributes;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
 namespace TankGame {
     public class Tank : MonoBehaviour {
-        [SerializeField]
-        private float _maxSpeed;
-
-        [SerializeField]
+        [SerializeField, BoxGroup("References")]
         private Transform _spriteRoot;
         
-        [SerializeField]
+        [SerializeField, BoxGroup("References")]
         private Animator _animator;
 
-        [SerializeField]
+        [SerializeField, BoxGroup("References")]
         private GameObject _bulletPrefab;
 
-        [SerializeField]
+        [SerializeField, BoxGroup("References")]
         private Transform _bulletSpawnTransform;
 
+        [SerializeField, BoxGroup("Properties")]
+        private float _maxSpeed;
 
+        [SerializeField, BoxGroup("Properties")]
+        private float _mainWeaponReloadTimeSecs;        
+
+        
         private Rigidbody2D _rigidbody2D;
         private ITankInput _input;
         private bool _movingLastFrame = false;
         private Direction _facingDirection = Direction.Up;
 
+        
+        // Should this be managed by an external manager/controller?
+        // What happens when the tank dies if there are still bullets 
+        // on the screen?
         private ObjectPool _bulletObjectPool;
         
         
@@ -32,7 +40,7 @@ namespace TankGame {
             _rigidbody2D = GetComponent<Rigidbody2D>();
             _input = GetComponent<ITankInput>();
 
-            _bulletObjectPool = new ObjectPool(_bulletPrefab, gameObject, 10);
+            _bulletObjectPool = new ObjectPool(_bulletPrefab, gameObject, 5);
         }
 
 
@@ -102,7 +110,13 @@ namespace TankGame {
                     bulletObj.SetActive(true);
                     
                     bullet.Set(_facingDirection, (GameObject obj) => {
-                        _bulletObjectPool.ReturnObject(obj);
+                        // Safety if tank is removed from the game for whatever reason
+                        // Tanks would be pool managed but just in case
+                        if (this == null) {
+                            Destroy(obj);
+                        } else {
+                            _bulletObjectPool.ReturnObject(obj);
+                        }
                     });
                 }
             }
