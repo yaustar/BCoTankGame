@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using NaughtyAttributes;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Serialization;
 using UnityEngine.Tilemaps;
 using UnityEngine.UI;
 
@@ -28,7 +29,10 @@ namespace TankGame {
         private float _gunReloadTimeSecs;
 
         [SerializeField]
-        private UnityEvent _diedEvent;
+        private UnityEvent _explosionStartedEvent;
+        
+        [FormerlySerializedAs("_diedEvent")] [SerializeField]
+        private UnityEvent _explosionEndedEvent;
 
         
         private Rigidbody2D _rigidbody2D;
@@ -202,13 +206,14 @@ namespace TankGame {
         private IEnumerator DeathAnimation() {
             _animator.Play("Explode");
             _collider2D.enabled = false;
+            _explosionStartedEvent.Invoke();
             
             var wait = new WaitForSeconds(2f);
             yield return wait;
             
             gameObject.SetActive(false);
             _deadCallback?.Invoke(gameObject);
-            _diedEvent.Invoke();
+            _explosionEndedEvent.Invoke();
         }
 
     }

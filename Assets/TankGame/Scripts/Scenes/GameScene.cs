@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using NaughtyAttributes;
+using SmartData.SmartLevelState;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -24,6 +25,10 @@ namespace TankGame {
         [SerializeField, BoxGroup("Events")]
         private UnityEvent _spawnPlayerEvent;
 
+        [SerializeField, BoxGroup("Events")]
+        private UnityEvent _newLevelStartedEvent;
+
+        
         [SerializeField, BoxGroup("Svars")]
         private SmartData.SmartInt.IntReader  _playerLivesMaxConst;
         
@@ -32,6 +37,9 @@ namespace TankGame {
 
         [SerializeField, BoxGroup("Svars")]
         private SmartData.SmartInt.IntWriter _playerScoreSvar;
+
+        [SerializeField, BoxGroup("Svars")]
+        private LevelStateWriter _levelStateSvar;
 
         [SerializeField]
         private int _pointsPerTankDestroyed = 10;
@@ -45,6 +53,9 @@ namespace TankGame {
         void Start() {
             _playerLivesCountSvar.value = _playerLivesMaxConst.value;
             _playerScoreSvar.value = 0;
+
+            _levelStateSvar.value = LevelState.ShowIntro;
+            StartCoroutine(StartLevelInXSecs());
             
 #if BUILD_DEBUG
             Terminal.Shell.AddCommand("AddScore", DebugCommandAddScore, 1, 1);
@@ -88,6 +99,15 @@ namespace TankGame {
         private void OnGameEnd() {
             Time.timeScale = 0f;
             _gameEndEvent.Invoke();
+        }
+
+
+        private IEnumerator StartLevelInXSecs() {
+            var wait = new WaitForSeconds(1f);
+            yield return wait;
+
+            _levelStateSvar.value = LevelState.InProgress;
+            _newLevelStartedEvent.Invoke();
         }
         
         

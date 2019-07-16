@@ -17,10 +17,12 @@
 - [x] Add button to return to main menu from Leaderboard 
 - [x] Add player controller interface for the tank
 - [x] Make walls collideable by the tanks
-- [ ] Add basic scoring mechanic for destroying enemy tanks
+- [x] Add basic scoring mechanic for destroying enemy tanks
 - [ ] Add spawning of enemy tanks
 - [ ] Connect enemy tanks left UI to destruction of enemy tanks
 - [ ] Add level changes when all tanks are destroyed
+    - [ ] Update hud UI in game
+    - [ ] Show level number at start of level
 - [x] Add destructable terrain (?)
 - [ ] Add some basic move AI controller to the tanks (first pass)
 - [x] Allow the player to shoot via the controller

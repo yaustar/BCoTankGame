@@ -215,7 +215,7 @@ MonoBehaviour:
   _bulletSpawnTransform: {fileID: 2807406022412254114}
   _maxSpeed: 2
   _gunReloadTimeSecs: 1
-  _diedEvent:
+  _explosionStartedEvent:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 11400000, guid: 14f3dac3826a7ec4ba4753d42c04c5f2, type: 2}
@@ -229,6 +229,11 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  _explosionEndedEvent:
+    m_PersistentCalls:
+      m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &8536496977480907973
