@@ -23,7 +23,7 @@
 - [ ] Add level changes when all tanks are destroyed
 - [x] Add destructable terrain (?)
 - [ ] Add some basic move AI controller to the tanks (first pass)
-- [ ] Allow the player to shoot via the controller
+- [x] Allow the player to shoot via the controller
     - [x] Be able to fire bullets 
     - [x] Add a UI element to show the main shot reload time
     - [x] Add a fire rate limit
@@ -34,4 +34,6 @@
 	- [ ] Have mine arm when player has left the square (bomberman style)
 	- [ ] Enforce a limit / reload 
 	- [ ] Explode when any tank collides with it
-- [ ] When player dies, have it respawn back one of two bases positions (check that it area is free before spawning, or cheat by destroying whatever is at spawn position)
+- [x] When player dies, have it respawn positions 
+    - [x] Check that it area is free before spawning, or cheat by destroying whatever is at spawn position
+    - [x] Player respawns when it dies

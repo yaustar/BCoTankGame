@@ -1,11 +1,14 @@
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using NaughtyAttributes;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.Tilemaps;
 using UnityEngine.UI;
 
 namespace TankGame {
-    public class Tank : MonoBehaviour, IGun {
+    public class Tank : MonoBehaviour, IGun, IDamagable {
         [SerializeField, BoxGroup("References")]
         private Transform _spriteRoot;
         
@@ -22,15 +25,22 @@ namespace TankGame {
         private float _maxSpeed;
 
         [SerializeField, BoxGroup("Properties")]
-        private float _gunReloadTimeSecs;        
+        private float _gunReloadTimeSecs;
+
+        [SerializeField]
+        private UnityEvent _diedEvent;
 
         
         private Rigidbody2D _rigidbody2D;
+        private Collider2D _collider2D;
         private ITankInput _input;
         private bool _movingLastFrame = false;
         private Direction _facingDirection = Direction.Up;
         private float _secsTimeSinceGunFired = float.MaxValue;
+        private bool _canMove = true;
 
+        private Action<GameObject> _deadCallback;
+        
         
         // Should this be managed by an external manager/controller?
         // What happens when the tank dies if there are still bullets 
@@ -40,6 +50,8 @@ namespace TankGame {
         
         private void Awake() {
             _rigidbody2D = GetComponent<Rigidbody2D>();
+            _collider2D = GetComponent<Collider2D>();
+            
             _input = GetComponent<ITankInput>();
 
             _bulletObjectPool = new ObjectPool(_bulletPrefab, gameObject, 5);
@@ -49,34 +61,29 @@ namespace TankGame {
         private void Update() {
             _secsTimeSinceGunFired += Time.deltaTime;
             
-            if (_input != null) {
+            if (_input != null && _canMove) {
                 var direction = _input.GetDirection();
                 var velocity = new Vector3();
 
-                var localRot = _spriteRoot.localEulerAngles;
                 
                 switch (direction) {
                     case Direction.Down: {
                         velocity.y = -1f;
-                        localRot.z = 180f;
                         break;
                     }
                         
                     case Direction.Up: {
                         velocity.y = 1f;
-                        localRot.z = 0f;
                         break;
                     }
                     
                     case Direction.Left: {
                         velocity.x = -1f;
-                        localRot.z = 90f;
                         break;
                     }
                     
                     case Direction.Right: {
                         velocity.x = 1f;
-                        localRot.z = 270f;
                         break;
                     }
                     
@@ -86,8 +93,6 @@ namespace TankGame {
                 velocity *= _maxSpeed;
                 _rigidbody2D.velocity = velocity;
                 
-                _spriteRoot.localEulerAngles = localRot;
-
                 if (direction != Direction.None) {
                     if (!_movingLastFrame) {
                         _animator.Play("Moving");
@@ -103,6 +108,8 @@ namespace TankGame {
                     _movingLastFrame = false;
                 }
                 
+                SetSpriteDirection(_facingDirection);
+                
                 if (_input.HasAttemptedFired() && _secsTimeSinceGunFired >= _gunReloadTimeSecs) {
                     var bulletObj = _bulletObjectPool.GetObject();
                     bulletObj.transform.SetParent(transform.parent);
@@ -111,7 +118,7 @@ namespace TankGame {
 
                     bulletObj.SetActive(true);
                     
-                    bullet.Set(_facingDirection, (GameObject obj) => {
+                    bullet.Restart(_facingDirection, (GameObject obj) => {
                         // Safety if tank is removed from the game for whatever reason
                         // Tanks would be pool managed but just in case
                         if (this == null) {
@@ -123,6 +130,10 @@ namespace TankGame {
 
                     _secsTimeSinceGunFired = 0f;
                 }
+            }
+
+            if (!_canMove) {
+                _rigidbody2D.velocity = Vector2.zero;
             }
         }
         
@@ -136,5 +147,69 @@ namespace TankGame {
         public float GetSecSinceLastFired() {
             return _secsTimeSinceGunFired;
         }
+
+
+        public void Restart(Direction startDirection, Action<GameObject> destroyCallback) {
+            _facingDirection = startDirection;
+            SetSpriteDirection(startDirection);
+            _rigidbody2D.velocity = Vector2.zero;
+            _collider2D.enabled = true;
+            _canMove = true;
+
+            _deadCallback = destroyCallback;
+        }
+
+
+        public void OnDamageGiven(int damage, GiveDamage damageGiver, List<Vector2> damagePoints) {
+            StartCoroutine(DeathAnimation());
+            _canMove = false;
+        }
+
+        
+        
+        // Private
+        private void SetSpriteDirection(Direction direction) {
+            var localRot = _spriteRoot.localEulerAngles;
+            
+            switch (direction) {
+                case Direction.Down: {
+                    localRot.z = 180f;
+                    break;
+                }
+                        
+                case Direction.Up: { 
+                    localRot.z = 0f;
+                    break;
+                }
+                    
+                case Direction.Left: {
+                    localRot.z = 90f;
+                    break;
+                }
+                    
+                case Direction.Right: {
+                    localRot.z = 270f;
+                    break;
+                }
+                    
+                default: break;
+            }
+            
+            _spriteRoot.localEulerAngles = localRot;
+        }
+
+
+        private IEnumerator DeathAnimation() {
+            _animator.Play("Explode");
+            _collider2D.enabled = false;
+            
+            var wait = new WaitForSeconds(2f);
+            yield return wait;
+            
+            gameObject.SetActive(false);
+            _deadCallback?.Invoke(gameObject);
+            _diedEvent.Invoke();
+        }
+
     }
 }

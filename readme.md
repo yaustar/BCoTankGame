@@ -8,6 +8,14 @@
 
 ## Extra notes
 
+### Improvements that could be made
+
+There's some shared behaviour in terms of movement between Tank and Bullet that could be refactored out.
+
+I'm not a big fan of how I'm handling the pooling for tanks and bullets but have gone too far with and short on time to change it. Feels very custom and has forced Tank and Bullet to be poolable items when they don't have to be. 
+
+It works but is too highly coupled. Ideally, I would like the Tank/Bullet component to not know that they belong to a pool.
+
 ### Features were tested with the Command Terminal
 
 Using the Command Terminal, I was able to test features in the game easily without needing to add the game logic. This includes checking the game UI was being updated correctly (e.g Player lives) and adding/removing high scores in the leaderboard. 

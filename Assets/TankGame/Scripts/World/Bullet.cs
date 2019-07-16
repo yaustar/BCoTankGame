@@ -5,7 +5,7 @@ using UnityEngine;
 
 
 namespace TankGame {
-    public class Bullet : MonoBehaviour {
+    public class Bullet : MonoBehaviour, IDamagable {
         [SerializeField]
         private float _speed;
 
@@ -38,7 +38,7 @@ namespace TankGame {
 
 
         // Public API
-        public void Set(Direction direction, Action<GameObject> destroyCallback) {
+        public void Restart(Direction direction, Action<GameObject> destroyCallback) {
             var velocity = new Vector3();
 
             switch (direction) {
@@ -73,6 +73,12 @@ namespace TankGame {
         }
 
 
+        public void OnDamageGiven(int damage, GiveDamage damageGiver, List<Vector2> damagePoints) {
+            OnDead();
+        }
+
+
+        // Private 
         private void OnDead() {
             if (_deadCallback != null) {
                 _deadCallback(gameObject);
