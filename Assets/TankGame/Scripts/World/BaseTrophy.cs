@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 
 namespace TankGame {
-    public class BaseTrophy : MonoBehaviour, IDamagable {
+    public class BaseTrophy : MonoBehaviour, IDamagable, IHealth {
         [SerializeField]
         private int _startingHealth;
 
@@ -20,6 +20,7 @@ namespace TankGame {
         }
 
 
+        // Public callbacks
         public void OnDamageGiven(int damage, GiveDamage damageGiver, List<Vector2> damagePoints) {
             _health -= damage;
             if (_health <= 0) {
@@ -28,6 +29,16 @@ namespace TankGame {
                 
                 // TODO Play an explosion effect
             }
+        }
+
+
+        public int GetHealthCurrent() {
+            return _health;
+        }
+
+
+        public int GetHealthMax() {
+            return _startingHealth;
         }
     }
 }
