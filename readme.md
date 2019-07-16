@@ -10,11 +10,13 @@
 
 ### Improvements that could be made
 
-There's some shared behaviour in terms of movement between Tank and Bullet that could be refactored out.
+There's some shared behaviour in terms of movement between Tank and Bullet that could be refactored out. 
 
 I'm not a big fan of how I'm handling the pooling for tanks and bullets but have gone too far with and short on time to change it. Feels very custom and has forced Tank and Bullet to be poolable items when they don't have to be. 
 
 It works but is too highly coupled. Ideally, I would like the Tank/Bullet component to not know that they belong to a pool.
+
+Adding a second could be challenging and would require refactoring in a number of places. I would have to make use of the of the Smart Data multi* types and add the player index to GameObjects such as Bullets to identify who gets the score. 
 
 ### Features were tested with the Command Terminal
 
@@ -28,6 +30,8 @@ Command Terminal isn't the most user friendly of terminals for an end user and T
 
 I have my own framework in place of SmartData based on the same talk but involves the use of other libraries such as OdinInspector for some functionality and therefore couldn't use it for this test. 
 
+This is the first time I've used SmartData so hitting issues during the test.
+
 SmartData isn't perfect and wouldn't use it in a Production environment as both the release and the GitHub repo have bugs (e.g the dispatch button on the SmartEvent in the inspector doesn't work) that have been addressed by the team but haven't yet been made public on the repo.
 
 However, as it's the closest Open Source framework to my own, I'm using it for the test as the runtime logic seems to work fine.
@@ -36,4 +40,9 @@ The downside of this approach is that it is very Editor which can make it diffic
 
 Upsides include that it is more of a 'Unity' way of implementing features and logic so requires less of working around Unity itself and taking advantage of tool features.
 
-Ideally, I would like to explore ZenInject, Entitas or DOTs but haven't yet used them in a signifcant capactity so I'm sticking with what I know due to time constraints. I really want to investigate into DOD with Unity as I have trouble understanding the how to 'glue' between the data and the visuals.
+Ideally, I would like to explore Entitas or DOTs but haven't yet used them in a signifcant capactity so I'm sticking with what I know due to time constraints. I really want to investigate into DOD with Unity as I have trouble understanding the how to 'glue' between the data and the visuals.
+
+
+## Making the game 'fun'
+
+TBD

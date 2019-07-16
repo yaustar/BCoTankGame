@@ -32,9 +32,13 @@ namespace TankGame {
 
         [SerializeField, BoxGroup("Svars")]
         private SmartData.SmartInt.IntWriter _playerScoreSvar;
+
+        [SerializeField]
+        private int _pointsPerTankDestroyed = 10;
         
         
         void Awake() {
+            Time.timeScale = 1f;
         }
 
 
@@ -57,31 +61,36 @@ namespace TankGame {
             Terminal.Shell.RemoveCommand("DestroyPlayer");
 #endif            
         }
-
-        
-        // Update is called once per frame
-        void Update() {
- 
-        }
         
         
         // Public callbacks
         public void OnPlayerDeath() {
             _playerLivesCountSvar.value -= 1;
             if (_playerLivesCountSvar.value == 0) {
-                _gameEndEvent.Invoke();
+                OnGameEnd();
             } else {
                 _spawnPlayerEvent.Invoke();
             }
         }
 
 
-        public void OnBaseTropyDestroyed() {
-            _gameEndEvent.Invoke();
+        public void OnEnemyDeath() {
+            _playerScoreSvar.value += _pointsPerTankDestroyed;
+        }
+
+
+        public void OnBaseTrophyDestroyed() {
+            OnGameEnd();
         }
         
         
         // Private
+        private void OnGameEnd() {
+            Time.timeScale = 0f;
+            _gameEndEvent.Invoke();
+        }
+        
+        
 #if BUILD_DEBUG
         private void DebugCommandAddScore(CommandArg[] args) {
             _playerScoreSvar.value += args[0].Int;
