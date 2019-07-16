@@ -20,7 +20,8 @@ namespace TankGame {
 
 
         private ObjectPool _iconPool;
-
+        private int _lastFrameValue = Int32.MaxValue;
+        
 
         private void Awake() {
             _iconPool = new ObjectPool(_iconPrefab, _iconsPoolContainerObject, 5);
@@ -28,7 +29,18 @@ namespace TankGame {
 
         
         void Start() {
-            _intSvar.BindListener(OnSvarValueUpdated, true);
+            // Very broken, can't unbind the listener!
+            //_intSvar.BindListener(OnSvarValueUpdated, true);
+        }
+
+
+        private void Update() {
+            var val = _intSvar.value;
+            
+            if (_lastFrameValue != val) {
+                OnSvarValueUpdated(val);
+                _lastFrameValue = val;
+            }
         }
 
 

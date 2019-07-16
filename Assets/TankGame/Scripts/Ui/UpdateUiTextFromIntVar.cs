@@ -12,15 +12,27 @@ namespace TankGame {
 
 
         private Text _text;
-        
+        private int _lastFrameValue = Int32.MaxValue;
+
         
         private void Awake() {
             _text = this.GetComponent<Text>();
         }
 
         
-        private void Start() {
-            _intSvar.BindListener(OnSvarValueUpdated, true);
+        void Start() {
+            // Very broken, can't unbind the listener!
+            //_intSvar.BindListener(OnSvarValueUpdated, true);
+        }
+
+
+        private void Update() {
+            var val = _intSvar.value;
+            
+            if (_lastFrameValue != val) {
+                OnSvarValueUpdated(val);
+                _lastFrameValue = val;
+            }
         }
         
         
