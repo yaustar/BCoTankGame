@@ -39,6 +39,7 @@ namespace TankGame {
 #if BUILD_DEBUG
             Terminal.Shell.AddCommand("ReduceLives", DebugCommandReducePlayerLives, 1, 1);
             Terminal.Shell.AddCommand("AddScore", DebugCommandAddScore, 1, 1);
+            Terminal.Shell.AddCommand("DestroyBase", DebugCommandDestroyBase, 0, 0);
 #endif
         }
 
@@ -47,16 +48,14 @@ namespace TankGame {
 #if BUILD_DEBUG
             Terminal.Shell.RemoveCommand("ReducePlayerLives");
             Terminal.Shell.RemoveCommand("AddScore");
+            Terminal.Shell.RemoveCommand("DestroyBase");
 #endif            
         }
 
         
         // Update is called once per frame
         void Update() {
-            // Stub
-            if (Input.GetKeyDown(KeyCode.Space)) {
-                _showMainMenuEvent.Invoke();
-            }
+ 
         }
         
         
@@ -87,6 +86,21 @@ namespace TankGame {
 
         private void DebugCommandAddScore(CommandArg[] args) {
             _playerScoreSvar.value += args[0].Int;
+        }
+
+
+        private void DebugCommandDestroyBase(CommandArg[] args) {
+            const string OBJ_NAME = "Base-Trophy";
+            GameObject baseTropyObj = GameObject.Find(OBJ_NAME);
+            var emptyList = new List<Vector2>();
+            if (baseTropyObj != null) {
+                var damagables = baseTropyObj.GetComponents<IDamagable>();
+                for (int i = 0; i < damagables.Length; ++i) {
+                    damagables[i].OnDamageGiven(int.MaxValue, null, emptyList);
+                }
+            } else {
+                Terminal.Log("Can't find Base Trophy GameObject " + OBJ_NAME);
+            }
         }
 #endif 
     }
