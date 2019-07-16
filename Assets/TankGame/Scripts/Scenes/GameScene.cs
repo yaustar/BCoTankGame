@@ -14,12 +14,6 @@ using CommandTerminal;
 namespace TankGame {
     public class GameScene : MonoBehaviour {
         [SerializeField, BoxGroup("Events")]
-        private UnityEvent _showMainMenuEvent;
-        
-        [SerializeField, BoxGroup("Events")]
-        private UnityEvent _showLeaderboardEvent;
-        
-        [SerializeField, BoxGroup("Events")]
         private UnityEvent _gameEndEvent;
 
         [SerializeField, BoxGroup("Events")]
@@ -47,6 +41,10 @@ namespace TankGame {
         [SerializeField, BoxGroup("Svars")]
         private SmartData.SmartInt.IntWriter _enemiesLeftThisLevelSvar;
 
+        [SerializeField, BoxGroup("Svars")]
+        private SmartData.SmartInt.IntWriter _levelNumberSvar;
+
+        
         [SerializeField]
         private int _pointsPerTankDestroyed = 10;
         
@@ -59,8 +57,8 @@ namespace TankGame {
         void Start() {
             _playerLivesCountSvar.value = _playerLivesMaxConst.value;
             _playerScoreSvar.value = 0;
+            _levelNumberSvar.value = 1;
 
-            _levelStateSvar.value = LevelState.ShowIntro;
             StartCoroutine(StartLevelInXSecs());
             
 #if BUILD_DEBUG
@@ -94,6 +92,11 @@ namespace TankGame {
         public void OnEnemyDeath() {
             _playerScoreSvar.value += _pointsPerTankDestroyed;
             _enemiesLeftThisLevelSvar.value = Mathf.Max(_enemiesLeftThisLevelSvar.value - 1, 0);
+
+            if (_enemiesLeftThisLevelSvar.value <= 0) {
+                _levelNumberSvar.value += 1;
+                StartCoroutine(StartLevelInXSecs());
+            }
         }
 
 
@@ -110,9 +113,10 @@ namespace TankGame {
 
 
         private IEnumerator StartLevelInXSecs() {
+            _levelStateSvar.value = LevelState.ShowIntro;
             _enemiesLeftThisLevelSvar.value = _maxEnemiesThisLevelToSpawnSvar.value;
             
-            var wait = new WaitForSeconds(1f);
+            var wait = new WaitForSeconds(2f);
             yield return wait;
 
             _levelStateSvar.value = LevelState.InProgress;

@@ -21,7 +21,7 @@
 - [x] Add spawning of enemy tanks
 - [x] Connect enemy tanks left UI to destruction of enemy tanks
 - [ ] Add level changes when all tanks are destroyed
-    - [ ] Update hud UI in game
+    - [x] Update hud UI in game
     - [ ] Show level number at start of level
 - [x] Add destructable terrain (?)
 - [ ] Add some basic move AI controller to the tanks (first pass)

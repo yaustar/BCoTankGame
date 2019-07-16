@@ -44,38 +44,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 626a1f604fe77104f93b9bbeadab2e19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _showMainMenuEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 11400000, guid: 76e628fab5caf834da46c7f206c97568, type: 2}
-        m_MethodName: Dispatch
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  _showLeaderboardEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 11400000, guid: 9e57b43fb93e27e4d82dc85e7e482bac, type: 2}
-        m_MethodName: Dispatch
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   _gameEndEvent:
     m_PersistentCalls:
       m_Calls:
@@ -208,6 +176,21 @@ MonoBehaviour:
     _value: 0
     _smartConst: {fileID: 0}
     _smartVar: {fileID: 11400000, guid: ca6f0fc70267ae446819896789314c2f, type: 2}
+    _smartMulti: {fileID: 0}
+    _onUpdate:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: SmartData.SmartInt.Data.IntVar+IntEvent, Assembly-CSharp, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+  _levelNumberSvar:
+    _owner: {fileID: 746298162175381129}
+    _propertyPath: _levelNumberSvar
+    _autoListen: 0
+    _multiIndex: 0
+    _refType: 2
+    _value: 0
+    _smartConst: {fileID: 0}
+    _smartVar: {fileID: 11400000, guid: 822c7dff5248df24c9501a3ad84c4524, type: 2}
     _smartMulti: {fileID: 0}
     _onUpdate:
       m_PersistentCalls:

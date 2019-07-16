@@ -1011,6 +1011,7 @@ GameObject:
   - component: {fileID: 8466824076726182815}
   - component: {fileID: 8466824076726182813}
   - component: {fileID: 8466824076726182814}
+  - component: {fileID: 3780069527401285944}
   m_Layer: 5
   m_Name: Value-Level
   m_TagString: Untagged
@@ -1079,6 +1080,33 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: 1
+--- !u!114 &3780069527401285944
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8466824076726182808}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ae5d42bd12c6d145ba8a6b97a7cbc2b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _intSvar:
+    _owner: {fileID: 3780069527401285944}
+    _propertyPath: _intSvar
+    _autoListen: 0
+    _multiIndex: 0
+    _refType: 2
+    _value: 0
+    _smartConst: {fileID: 0}
+    _smartVar: {fileID: 11400000, guid: 822c7dff5248df24c9501a3ad84c4524, type: 2}
+    _smartMulti: {fileID: 0}
+    _onUpdate:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: SmartData.SmartInt.Data.IntVar+IntEvent, Assembly-CSharp, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
 --- !u!1001 &7729059934798029779
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -54,7 +54,7 @@ namespace TankGame {
         
         // Private 
         private void AttemptSpawn() {
-            var randomSpawnArea = _spawnAreas[Random.Range(0, _spawnAreas.Count - 1)];
+            var randomSpawnArea = _spawnAreas[Random.Range(0, _spawnAreas.Count)];
             
             var spawnAreaPos = randomSpawnArea.GetCollider2D().transform.position;
             var points = new List<Vector2>();
