@@ -6,6 +6,6 @@ namespace TankGame {
     public interface ITankInput {
         // Assume only 4 way direction
         Direction GetDirection(Tank tank);
-        bool HasAttemptedFired();
+        bool HasAttemptedFired(Tank tank);
     }
 }

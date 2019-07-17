@@ -76,11 +76,48 @@ namespace TankGame {
         }
 
 
-        public bool HasAttemptedFired() {
-            // Stub
-            return false;
-            
+        public bool HasAttemptedFired(Tank tank) {
             // Only fire if there is something in front of use of interest
+            var bulletSpawnPos = tank.GetBulletSpawnPosition();
+            var rayStart = new Vector2(bulletSpawnPos.x, bulletSpawnPos.y);
+            var direction = new Vector2();
+            switch (tank.GetDirection()) {
+                case Direction.Down: {
+                    direction.x = 0f;
+                    direction.y = -1f;
+                    break;
+                }
+                
+                case Direction.Up: {
+                    direction.x = 0f;
+                    direction.y = 1f;
+                    break;
+                }
+                
+                case Direction.Left: {
+                    direction.x = -1f;
+                    direction.y = 0f;
+                    break;
+                }
+                
+                case Direction.Right: {
+                    direction.x = 1f;
+                    direction.y = 0f;
+                    break;
+                }
+                
+                default: break;
+            }
+            
+            var hits = Physics2D.RaycastAll(rayStart, direction);
+            for (int i = 0; i < hits.Length; ++i) {
+                var hit = hits[i];
+                if (hit.transform.GetComponent<AiInterest>()) {
+                    return true;
+                }
+            }
+
+            return false;
         }
     }
 }

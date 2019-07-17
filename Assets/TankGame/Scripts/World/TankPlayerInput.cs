@@ -38,7 +38,7 @@ namespace TankGame {
         }
 
 
-        public bool HasAttemptedFired() {
+        public bool HasAttemptedFired(Tank tank) {
             if (Input.GetButtonDown("Fire")) {
                 return true;
             }

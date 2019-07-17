@@ -14,15 +14,12 @@ namespace TankGame {
             }
         }
  
+        
         private void OnTriggerExit2D (Collider2D other) {
             _objectsInArea.Remove(other.gameObject);
         }
-
-        private void Update() {
-            Debug.Log(this.gameObject.name + " " + _objectsInArea.Count);
-        }
-
-
+        
+        
         // Public API
         public List<GameObject> GetObjectsInSensor() {
             return _objectsInArea;

@@ -114,7 +114,7 @@ namespace TankGame {
                 
                 SetSpriteDirection(_facingDirection);
                 
-                if (_input.HasAttemptedFired() && _secsTimeSinceGunFired >= _gunReloadTimeSecs) {
+                if (_secsTimeSinceGunFired >= _gunReloadTimeSecs && _input.HasAttemptedFired(this)) {
                     var bulletObj = _bulletObjectPool.GetObject();
                     bulletObj.transform.SetParent(transform.parent);
                     var bullet = bulletObj.GetComponent<Bullet>();
@@ -155,6 +155,11 @@ namespace TankGame {
         
         public Direction GetDirection() {
             return _facingDirection;
+        }
+        
+        
+        public Vector3 GetBulletSpawnPosition() {
+            return _bulletSpawnTransform.position;
         }
 
 

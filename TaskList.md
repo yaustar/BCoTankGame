@@ -29,7 +29,7 @@
     - [x] Be able to fire bullets 
     - [x] Add a UI element to show the main shot reload time
     - [x] Add a fire rate limit
-- [ ] Make the tanks shoot randomly
+- [x] Make the tanks shoot randomly
 - [ ] Increase number of tanks to spawn for each level by X amount
 - [x] Have end condition that if the base is destroyed, the game ends too
 - [ ] Add an extra weapon type that allows the player tank to drop land mines
