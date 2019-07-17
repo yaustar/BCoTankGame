@@ -6,8 +6,13 @@ using UnityEngine;
 namespace TankGame {
     public class AiSensor : MonoBehaviour {
         private List<GameObject> _objectsInArea = new List<GameObject>();
-        
-        
+
+
+        private void OnEnable() {
+            _objectsInArea.Clear();
+        }
+
+
         private void OnTriggerEnter2D (Collider2D other) {
             if (!_objectsInArea.Contains(other.gameObject)) {
                 _objectsInArea.Add(other.gameObject);
