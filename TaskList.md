@@ -41,4 +41,4 @@
 - [x] When player dies, have it respawn positions 
     - [x] Check that it area is free before spawning, or cheat by destroying whatever is at spawn position
     - [x] Player respawns when it dies
-- [ ] Update readme of polish pass and what would make the game fun
+- [x] Update readme of polish pass and what would make the game fun

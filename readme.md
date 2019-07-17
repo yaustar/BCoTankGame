@@ -33,7 +33,7 @@ Press the ` key and type help for the commands. Search the code base for "DebugC
 
 Command Terminal isn't the most user friendly of terminals for an end user and Touch Console Pro is much better allowing for descriptions and default values for the arguments.
 
-### Jusitifications on SmartData
+### Jusitifications on using SmartData
 
 I have my own framework in place of SmartData based on the same talk but involves the use of other libraries such as OdinInspector for some functionality and therefore couldn't use it for this test. 
 
@@ -52,4 +52,9 @@ Ideally, I would like to explore Entitas or DOTs but haven't yet used them in a 
 
 ## Making the game 'fun'
 
-TBD
+* Polish / Juice / SFX to added (e.g walls breaking apart effect, bombs explode, etc)
+* Different type of enemies (tougher ones on the later levels)
+* Better AI that actively hunt for the base
+* Levels to change layout every X levels
+* Destroyed tanks can level destructible obstacles that can naturally regenerate the level
+* Better celebration when the player reaches a new high score
