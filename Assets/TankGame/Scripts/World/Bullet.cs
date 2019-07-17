@@ -17,7 +17,8 @@ namespace TankGame {
         private float _secsSinceSpawned = 0f;
 
         private Action<GameObject> _deadCallback;
-
+        private bool _isDead = false;
+        
 
         private void Awake() {
             _rigidbody2D = GetComponent<Rigidbody2D>();
@@ -70,6 +71,7 @@ namespace TankGame {
             _secsSinceSpawned = 0f;
             _rigidbody2D.velocity = velocity;
             _deadCallback = destroyCallback;
+            _isDead = false;
         }
 
 
@@ -80,10 +82,14 @@ namespace TankGame {
 
         // Private 
         private void OnDead() {
-            if (_deadCallback != null) {
-                _deadCallback(gameObject);
-            } else {
-                Destroy(gameObject);
+            if (!_isDead) {
+                if (_deadCallback != null) {
+                    _deadCallback(gameObject);
+                } else {
+                    Destroy(gameObject);
+                }
+
+                _isDead = true;
             }
         }
     }

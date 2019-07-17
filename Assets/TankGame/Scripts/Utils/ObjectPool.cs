@@ -36,7 +36,9 @@ namespace TankGame {
         public void ReturnObject(GameObject obj) {
             obj.transform.SetParent(_parent.transform);
             obj.SetActive(false);
-            _pool.Add(obj);
+            if (!_pool.Contains(obj)) {
+                _pool.Add(obj);
+            }
         }
     }
 }

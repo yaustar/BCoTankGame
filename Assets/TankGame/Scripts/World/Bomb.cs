@@ -11,7 +11,7 @@ namespace TankGame {
         private List<GameObject> _objectsInArea = new List<GameObject>();
         private Action<GameObject> _deadCallback;
         private float _timeSinceSpawn;
-        
+        private bool _isDead = false;
         
         private void Awake() {
             _giveDamage = GetComponent<GiveDamage>();
@@ -50,8 +50,11 @@ namespace TankGame {
         // Public API
         public void Restart( Action<GameObject> destroyCallback) {
             _timeSinceSpawn = 0f;
-            _giveDamage.enabled = false;
             _deadCallback = destroyCallback;
+            _objectsInArea.Clear();
+            _giveDamage.enabled = false;
+            _giveDamage.Restart();
+            _isDead = false;
         }
 
 
@@ -63,10 +66,14 @@ namespace TankGame {
         
         // Private 
         private void OnDead() {
-            if (_deadCallback != null) {
-                _deadCallback(gameObject);
-            } else {
-                Destroy(gameObject);
+            if (!_isDead) {
+                if (_deadCallback != null) {
+                    _deadCallback(gameObject);
+                } else {
+                    Destroy(gameObject);
+                }
+
+                _isDead = true;
             }
         }
     }

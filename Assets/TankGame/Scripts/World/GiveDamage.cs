@@ -12,10 +12,16 @@ namespace TankGame {
 
         // OnTriggerEnter2D gets called before other components Awake
         private bool _ready = false;
-
+        
 
         private void Update() {
             _ready = true;
+        }
+        
+        
+        // Public API 
+        public void Restart() {
+            _ready = false;
         }
 
 

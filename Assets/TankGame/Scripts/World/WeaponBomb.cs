@@ -12,9 +12,7 @@ namespace TankGame {
             bombObj.transform.SetParent(owner.parent);
             var bomb = bombObj.GetComponent<Bomb>();
             bombObj.transform.position = transform.position;
-
-            bombObj.SetActive(true);
-
+            
             bomb.Restart((GameObject obj) => {
                 // Safety if weapon is removed from the game for whatever reason
                 if (this == null) {
@@ -23,6 +21,8 @@ namespace TankGame {
                     _pool.ReturnObject(obj);
                 }
             });
+            
+            bombObj.SetActive(true);
 
             _secsTimeSinceFired = 0f;
         }
