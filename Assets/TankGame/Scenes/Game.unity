@@ -404,18 +404,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1524161474 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 746298162175381129, guid: 55f539b2822e4414b9e934aed28fedee,
-    type: 3}
-  m_PrefabInstance: {fileID: 6901048328844538411}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 626a1f604fe77104f93b9bbeadab2e19, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1632597222
 GameObject:
   m_ObjectHideFlags: 0
@@ -1335,21 +1323,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 746298162175381129, guid: 55f539b2822e4414b9e934aed28fedee,
-        type: 3}
-      propertyPath: _levelStateSvar._owner
-      value: 
-      objectReference: {fileID: 1524161474}
-    - target: {fileID: 746298162175381129, guid: 55f539b2822e4414b9e934aed28fedee,
-        type: 3}
-      propertyPath: _levelStateSvar._propertyPath
-      value: _levelStateSvar
-      objectReference: {fileID: 0}
-    - target: {fileID: 746298162175381129, guid: 55f539b2822e4414b9e934aed28fedee,
-        type: 3}
-      propertyPath: _startingEnemySpawnCount
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 55f539b2822e4414b9e934aed28fedee, type: 3}
