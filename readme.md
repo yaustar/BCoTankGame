@@ -6,6 +6,13 @@
 * [QuickSearch](https://github.com/appetizermonster/Unity3D-QuickSearch) - Editor tool to have search on a hot key
 
 
+## Controls
+
+Arrow keys to move
+Ctrl to fire
+Alt to drop bomb (explodes on contact)
+
+
 ## Extra notes
 
 ### Improvements that could be made
