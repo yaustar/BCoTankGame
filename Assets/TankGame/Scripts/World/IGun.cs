@@ -1,6 +1,6 @@
 namespace TankGame {
     public interface IGun {
-        float GetReloadTimeSecs();
+        float GetGunReloadTimeSecs();
         float GetSecSinceLastFired();
     }
 }

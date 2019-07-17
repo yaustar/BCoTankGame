@@ -11,7 +11,7 @@ using UnityEngine.UI;
 namespace TankGame {
     [RequireComponent(typeof(Collider2D))]
     [RequireComponent(typeof(Rigidbody2D))]
-    public class Tank : MonoBehaviour, IGun, IDamagable {
+    public class Tank : MonoBehaviour, IGun, IBomb, IDamagable {
         [SerializeField, BoxGroup("References")]
         private Transform _spriteRoot;
         
@@ -89,13 +89,23 @@ namespace TankGame {
 
 
         // Public API
-        public float GetReloadTimeSecs() {
+        public float GetGunReloadTimeSecs() {
             return _gunReloadTimeSecs;
         }
 
 
         public float GetSecSinceLastFired() {
             return _secsTimeSinceGunFired;
+        }
+        
+        
+        public float GetBombReloadTimeSecs() {
+            return _bombReloadTimeSecs;
+        }
+
+
+        public float GetSecSinceLastBombed() {
+            return _secsTimeSinceBombDropped;
         }
 
         

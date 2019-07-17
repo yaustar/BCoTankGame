@@ -32,12 +32,12 @@
 - [x] Make the tanks shoot randomly
 - [x] Increase number of tanks to spawn for each level by X amount
 - [x] Have end condition that if the base is destroyed, the game ends too
-- [ ] Add an extra weapon type that allows the player tank to drop land mines
+- [x] Add an extra weapon type that allows the player tank to drop land mines
 	- [x] Connect extra button to this
 	- [x] Have mine arm when player has left the square (bomberman style)
 	- [x] Enforce a limit / reload 
 	- [x] Explode when any tank collides with it
-	- [ ] Create UI for bomb
+	- [x] Create UI for bomb
 - [x] When player dies, have it respawn positions 
     - [x] Check that it area is free before spawning, or cheat by destroying whatever is at spawn position
     - [x] Player respawns when it dies
