@@ -47,6 +47,12 @@ namespace TankGame {
         
         [SerializeField]
         private int _pointsPerTankDestroyed = 10;
+
+        [SerializeField]
+        private int _startingEnemySpawnCount = 5;
+        
+        [SerializeField]
+        private int _increaseEnemySpawnCountEachLevel = 2;
         
         
         void Awake() {
@@ -114,6 +120,8 @@ namespace TankGame {
 
         private IEnumerator StartLevelInXSecs() {
             _levelStateSvar.value = LevelState.ShowIntro;
+            _maxEnemiesThisLevelToSpawnSvar.value = 
+                _startingEnemySpawnCount + ((_levelNumberSvar.value - 1) * _increaseEnemySpawnCountEachLevel);
             _enemiesLeftThisLevelSvar.value = _maxEnemiesThisLevelToSpawnSvar.value;
             
             var wait = new WaitForSeconds(2f);
