@@ -6,7 +6,7 @@ namespace TankGame {
         
         
         // Public API
-        public Direction GetDirection() {
+        public Direction GetDirection(Tank tank) {
             // Use the standard Unity input for the moment
             // If we have a button remapper in the game, we can change this logic
             

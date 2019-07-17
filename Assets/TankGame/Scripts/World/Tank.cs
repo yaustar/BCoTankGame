@@ -66,7 +66,7 @@ namespace TankGame {
             _secsTimeSinceGunFired += Time.deltaTime;
             
             if (_input != null && _canMove) {
-                var direction = _input.GetDirection();
+                var direction = _input.GetDirection(this);
                 var velocity = new Vector3();
 
                 
@@ -150,6 +150,11 @@ namespace TankGame {
 
         public float GetSecSinceLastFired() {
             return _secsTimeSinceGunFired;
+        }
+
+        
+        public Direction GetDirection() {
+            return _facingDirection;
         }
 
 

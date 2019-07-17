@@ -469,7 +469,7 @@ MonoBehaviour:
         Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   _maxEnemiesThisLevelToSpawnSvar:
     _owner: {fileID: 1632597223}
-    _propertyPath: _maxEnemiesToSpawnSvar
+    _propertyPath: _maxEnemiesThisLevelToSpawnSvar
     _autoListen: 0
     _multiIndex: 0
     _refType: 2

@@ -24,12 +24,11 @@
     - [x] Update hud UI in game
     - [x] Show level number at start of level
 - [x] Add destructable terrain (?)
-- [ ] Add some basic move AI controller to the tanks (first pass)
+- [x] Add some basic move AI controller to the tanks (first pass)
 - [x] Allow the player to shoot via the controller
     - [x] Be able to fire bullets 
     - [x] Add a UI element to show the main shot reload time
     - [x] Add a fire rate limit
-- [ ] Have some super simple AI for the tanks   
 - [ ] Make the tanks shoot randomly
 - [ ] Increase number of tanks to spawn for each level by X amount
 - [x] Have end condition that if the base is destroyed, the game ends too

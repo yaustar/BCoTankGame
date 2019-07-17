@@ -76,6 +76,8 @@ namespace TankGame {
                         _objectPool.ReturnObject(obj);
                     }
                 });
+                
+                tankObj.transform.SetParent(transform.parent);
 
                 // Move it to the spawn area
                 tank.transform.position = randomSpawnArea.transform.position;

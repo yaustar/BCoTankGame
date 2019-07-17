@@ -5,7 +5,7 @@ using UnityEngine;
 namespace TankGame {
     public interface ITankInput {
         // Assume only 4 way direction
-        Direction GetDirection();
+        Direction GetDirection(Tank tank);
         bool HasAttemptedFired();
     }
 }
