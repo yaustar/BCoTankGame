@@ -11,30 +11,22 @@ using UnityEngine.UI;
 namespace TankGame {
     [RequireComponent(typeof(Collider2D))]
     [RequireComponent(typeof(Rigidbody2D))]
-    public class Tank : MonoBehaviour, IGun, IBomb, IDamagable {
+    public class Tank : MonoBehaviour, IDamagable {
         [SerializeField, BoxGroup("References")]
         private Transform _spriteRoot;
         
         [SerializeField, BoxGroup("References")]
         private Animator _animator;
-
-        [SerializeField, BoxGroup("References")]
-        private GameObject _bulletPrefab;
         
-        [SerializeField, BoxGroup("References")]
-        private GameObject _bombPrefab;
+        [SerializeField, BoxGroup("Optional References")]
+        private WeaponGun _optionalWeaponGun;
 
-        [SerializeField, BoxGroup("References")]
-        private Transform _bulletSpawnTransform;
+        [SerializeField, BoxGroup("Optional References")]
+        private WeaponBomb _optionalWeaponBomb;
+
         
         [SerializeField, BoxGroup("Properties")]
         private float _maxSpeed;
-
-        [SerializeField, BoxGroup("Properties")]
-        private float _gunReloadTimeSecs;
-
-        [SerializeField, BoxGroup("Properties")]
-        private float _bombReloadTimeSecs;
         
         [SerializeField]
         private UnityEvent _explosionStartedEvent;
@@ -48,35 +40,20 @@ namespace TankGame {
         private ITankInput _input;
         private bool _movingLastFrame = false;
         private Direction _facingDirection = Direction.Up;
-        private float _secsTimeSinceGunFired = float.MaxValue;
-        private float _secsTimeSinceBombDropped = float.MaxValue;
         private bool _canMove = true;
 
         private Action<GameObject> _deadCallback;
         
-        
-        // Should this be managed by an external manager/controller?
-        // What happens when the tank dies if there are still bullets 
-        // on the screen?
-        private ObjectPool _bulletObjectPool;
-        private ObjectPool _bombObjectPool;
-
         
         private void Awake() {
             _rigidbody2D = GetComponent<Rigidbody2D>();
             _collider2D = GetComponent<Collider2D>();
             
             _input = GetComponent<ITankInput>();
-
-            _bulletObjectPool = new ObjectPool(_bulletPrefab, gameObject, 5);
-            _bombObjectPool = new ObjectPool(_bombPrefab, gameObject, 10);
         }
 
 
         private void Update() {
-            _secsTimeSinceGunFired += Time.deltaTime;
-            _secsTimeSinceBombDropped += Time.deltaTime;
-                
             if (_input != null && _canMove) {
                 UpdateMovement();
                 UpdateWeapons();
@@ -89,33 +66,8 @@ namespace TankGame {
 
 
         // Public API
-        public float GetGunReloadTimeSecs() {
-            return _gunReloadTimeSecs;
-        }
-
-
-        public float GetSecSinceLastFired() {
-            return _secsTimeSinceGunFired;
-        }
-        
-        
-        public float GetBombReloadTimeSecs() {
-            return _bombReloadTimeSecs;
-        }
-
-
-        public float GetSecSinceLastBombed() {
-            return _secsTimeSinceBombDropped;
-        }
-
-        
         public Direction GetDirection() {
             return _facingDirection;
-        }
-        
-        
-        public Vector3 GetBulletSpawnPosition() {
-            return _bulletSpawnTransform.position;
         }
 
 
@@ -190,47 +142,16 @@ namespace TankGame {
         
         
         private void UpdateWeapons() {
-            if (_secsTimeSinceGunFired >= _gunReloadTimeSecs && _input.HasAttemptedFired(this)) {
-                var bulletObj = _bulletObjectPool.GetObject();
-                bulletObj.transform.SetParent(transform.parent);
-                var bullet = bulletObj.GetComponent<Bullet>();
-                bulletObj.transform.position = _bulletSpawnTransform.position;
-
-                bulletObj.SetActive(true);
-
-                bullet.Restart(_facingDirection, (GameObject obj) => {
-                    // Safety if tank is removed from the game for whatever reason
-                    // Tanks would be pool managed but just in case
-                    if (this == null) {
-                        Destroy(obj);
-                    } else {
-                        _bulletObjectPool.ReturnObject(obj);
-                    }
-                });
-
-                _secsTimeSinceGunFired = 0f;
+            if (_optionalWeaponGun != null) {
+                if (_optionalWeaponGun.CanFire() && _input.HasAttemptedFired(this)) {
+                    _optionalWeaponGun.Fire(_facingDirection, transform);
+                }
             }
-            
-            
-            if (_secsTimeSinceBombDropped >= _bombReloadTimeSecs && _input.HasAttemptedBomb(this)) {
-                var bombObj = _bombObjectPool.GetObject();
-                bombObj.transform.SetParent(transform.parent);
-                var bomb = bombObj.GetComponent<Bomb>();
-                bombObj.transform.position = transform.position;
 
-                bombObj.SetActive(true);
-
-                bomb.Restart((GameObject obj) => {
-                    // Safety if tank is removed from the game for whatever reason
-                    // Tanks would be pool managed but just in case
-                    if (this == null) {
-                        Destroy(obj);
-                    } else {
-                        _bombObjectPool.ReturnObject(obj);
-                    }
-                });
-
-                _secsTimeSinceBombDropped = 0f;
+            if (_optionalWeaponBomb != null) {
+                if (_optionalWeaponBomb.CanFire() && _input.HasAttemptedBomb(this)) {
+                    _optionalWeaponBomb.Fire(_facingDirection, transform);
+                }
             }
         }
         

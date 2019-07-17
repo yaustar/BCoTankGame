@@ -34,6 +34,8 @@ Transform:
   m_Children:
   - {fileID: 3185953451189991951}
   - {fileID: 2282011671040005807}
+  - {fileID: 2799409194938004918}
+  - {fileID: 413211917901269688}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -51,14 +53,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _spriteRoot: {fileID: 3185953451189991951}
   _animator: {fileID: 1705128543462396980}
-  _bulletPrefab: {fileID: 6364090647265773742, guid: 2dd8eb4aeecfa4ec585c70a83c49dc8c,
-    type: 3}
-  _bombPrefab: {fileID: 8032350311678742978, guid: 513ae9c6f3ca10d448671f98be9345ad,
-    type: 3}
-  _bulletSpawnTransform: {fileID: 2576201858153201334}
+  _optionalWeaponGun: {fileID: 6253355275833496565}
+  _optionalWeaponBomb: {fileID: 8394979566662342159}
   _maxSpeed: 4
-  _gunReloadTimeSecs: 0.75
-  _bombReloadTimeSecs: 5
   _explosionStartedEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -162,6 +159,7 @@ GameObject:
   - component: {fileID: 7231338008861848888}
   - component: {fileID: 7804698066713316180}
   - component: {fileID: 6283830434524138967}
+  - component: {fileID: 1326361054995888322}
   m_Layer: 12
   m_Name: Bomb Radial Slider
   m_TagString: Untagged
@@ -227,6 +225,20 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
+--- !u!114 &1326361054995888322
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1098595235891338092}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad243e4fe8a748b59d523c10a3db5190, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _weapon: {fileID: 8394979566662342159}
+  _slider: {fileID: 7636646483473811431}
 --- !u!1 &1412080197145303145
 GameObject:
   m_ObjectHideFlags: 0
@@ -238,7 +250,6 @@ GameObject:
   - component: {fileID: 2282011671040005807}
   - component: {fileID: 7482639461193123506}
   - component: {fileID: 4611399074259408312}
-  - component: {fileID: 117551833439532476}
   m_Layer: 12
   m_Name: WeaponUi
   m_TagString: Untagged
@@ -309,22 +320,6 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
---- !u!114 &117551833439532476
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1412080197145303145}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3d8f7b1ec24043128f175cfe995cddc9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _gunObj: {fileID: 945963923562605938}
-  _gunReloadSlider: {fileID: 6196120177217612434}
-  _bombObj: {fileID: 945963923562605938}
-  _bombReloadSlider: {fileID: 7636646483473811431}
 --- !u!1 &2143813181462942069
 GameObject:
   m_ObjectHideFlags: 0
@@ -424,6 +419,53 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!1 &2822853254666738892
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2799409194938004918}
+  - component: {fileID: 8394979566662342159}
+  m_Layer: 12
+  m_Name: WeaponBomb
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2799409194938004918
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2822853254666738892}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 945963923562605936}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8394979566662342159
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2822853254666738892}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1da4629ba124135970eff87ab4489a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _prefab: {fileID: 8032350311678742978, guid: 513ae9c6f3ca10d448671f98be9345ad, type: 3}
+  _spawnTransform: {fileID: 945963923562605936}
+  _reloadTimeSecs: 5
+  _poolStartCount: 5
 --- !u!1 &4330351804329477753
 GameObject:
   m_ObjectHideFlags: 0
@@ -541,6 +583,7 @@ GameObject:
   - component: {fileID: 1612257398914045225}
   - component: {fileID: 1767466828454192646}
   - component: {fileID: 2875187565114544915}
+  - component: {fileID: 2474073470292428485}
   m_Layer: 12
   m_Name: Gun Radial Slider
   m_TagString: Untagged
@@ -606,6 +649,20 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
+--- !u!114 &2474073470292428485
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4658571618177582468}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad243e4fe8a748b59d523c10a3db5190, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _weapon: {fileID: 6253355275833496565}
+  _slider: {fileID: 6196120177217612434}
 --- !u!1 &5408191456841888328
 GameObject:
   m_ObjectHideFlags: 0
@@ -742,6 +799,53 @@ Transform:
   m_Father: {fileID: 3185953451189991951}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &6343361851239767799
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 413211917901269688}
+  - component: {fileID: 6253355275833496565}
+  m_Layer: 12
+  m_Name: WeaponGun
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &413211917901269688
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6343361851239767799}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 945963923562605936}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6253355275833496565
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6343361851239767799}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3b7cf57d76b41048d5e104fca7bde6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _prefab: {fileID: 6364090647265773742, guid: 2dd8eb4aeecfa4ec585c70a83c49dc8c, type: 3}
+  _spawnTransform: {fileID: 2576201858153201334}
+  _reloadTimeSecs: 0.75
+  _poolStartCount: 5
 --- !u!1 &6896128740245181155
 GameObject:
   m_ObjectHideFlags: 0

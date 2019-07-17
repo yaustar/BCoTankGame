@@ -1346,6 +1346,11 @@ PrefabInstance:
       propertyPath: _levelStateSvar._propertyPath
       value: _levelStateSvar
       objectReference: {fileID: 0}
+    - target: {fileID: 746298162175381129, guid: 55f539b2822e4414b9e934aed28fedee,
+        type: 3}
+      propertyPath: _startingEnemySpawnCount
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 55f539b2822e4414b9e934aed28fedee, type: 3}
 --- !u!1001 &8466824076768563715

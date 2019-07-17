@@ -407,6 +407,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4855066268999520358}
+  - {fileID: 6304307086436074523}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -424,14 +425,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _spriteRoot: {fileID: 4855066268999520358}
   _animator: {fileID: 613694675678233233}
-  _bulletPrefab: {fileID: 3812265498255150157, guid: 96b800f12ea8e4720afab086830553db,
-    type: 3}
-  _bombPrefab: {fileID: 8032350311678742978, guid: 513ae9c6f3ca10d448671f98be9345ad,
-    type: 3}
-  _bulletSpawnTransform: {fileID: 2807406022412254114}
+  _optionalWeaponGun: {fileID: 3655924834877631133}
+  _optionalWeaponBomb: {fileID: 0}
   _maxSpeed: 2
-  _gunReloadTimeSecs: 1
-  _bombReloadTimeSecs: 10
   _explosionStartedEvent:
     m_PersistentCalls:
       m_Calls:
@@ -469,6 +465,7 @@ MonoBehaviour:
   _backSensor: {fileID: 3280248575783969313}
   _leftSensor: {fileID: 6909679236628388404}
   _rightSensor: {fileID: 1757258944200586292}
+  _bulletSpawnTransform: {fileID: 2807406022412254114}
 --- !u!61 &3329373581997791876
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -516,6 +513,53 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!1 &6713375886923676180
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6304307086436074523}
+  - component: {fileID: 3655924834877631133}
+  m_Layer: 12
+  m_Name: WeaponGun
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6304307086436074523
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6713375886923676180}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5312025590716045047}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3655924834877631133
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6713375886923676180}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3b7cf57d76b41048d5e104fca7bde6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _prefab: {fileID: 3812265498255150157, guid: 96b800f12ea8e4720afab086830553db, type: 3}
+  _spawnTransform: {fileID: 2807406022412254114}
+  _reloadTimeSecs: 0.75
+  _poolStartCount: 5
 --- !u!1 &6852949969088377976
 GameObject:
   m_ObjectHideFlags: 0

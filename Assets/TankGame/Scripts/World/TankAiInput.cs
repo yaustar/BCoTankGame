@@ -16,6 +16,9 @@ namespace TankGame {
         [SerializeField]
         private AiSensor _rightSensor;
 
+        [SerializeField]
+        private Transform _bulletSpawnTransform;
+        
 
         private Direction _direction = Direction.None;
         
@@ -78,7 +81,7 @@ namespace TankGame {
 
         public bool HasAttemptedFired(Tank tank) {
             // Only fire if there is something in front of use of interest
-            var bulletSpawnPos = tank.GetBulletSpawnPosition();
+            var bulletSpawnPos = _bulletSpawnTransform.position;
             var rayStart = new Vector2(bulletSpawnPos.x, bulletSpawnPos.y);
             var direction = new Vector2();
             switch (tank.GetDirection()) {
