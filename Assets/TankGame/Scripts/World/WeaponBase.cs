@@ -29,6 +29,11 @@ namespace TankGame {
         }
 
 
+        private void OnEnable() {
+            _secsTimeSinceFired = float.MaxValue;
+        }
+
+
         private void Update() {
             _secsTimeSinceFired += Time.deltaTime;
         }

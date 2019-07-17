@@ -9,8 +9,8 @@
 ## Controls
 
 Arrow keys to move
-Ctrl to fire
-Alt to drop bomb (explodes on contact)
+Left Ctrl to fire
+Left Alt to drop bomb (explodes on contact)
 
 
 ## Extra notes
