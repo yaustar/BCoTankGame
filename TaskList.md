@@ -20,16 +20,18 @@
 - [x] Add basic scoring mechanic for destroying enemy tanks
 - [x] Add spawning of enemy tanks
 - [x] Connect enemy tanks left UI to destruction of enemy tanks
-- [ ] Add level changes when all tanks are destroyed
+- [x] Add level changes when all tanks are destroyed
     - [x] Update hud UI in game
-    - [ ] Show level number at start of level
+    - [x] Show level number at start of level
 - [x] Add destructable terrain (?)
 - [ ] Add some basic move AI controller to the tanks (first pass)
 - [x] Allow the player to shoot via the controller
     - [x] Be able to fire bullets 
     - [x] Add a UI element to show the main shot reload time
     - [x] Add a fire rate limit
+- [ ] Have some super simple AI for the tanks   
 - [ ] Make the tanks shoot randomly
+- [ ] Increase number of tanks to spawn for each level by X amount
 - [x] Have end condition that if the base is destroyed, the game ends too
 - [ ] Add an extra weapon type that allows the player tank to drop land mines
 	- [ ] Connect extra button to this
@@ -39,3 +41,4 @@
 - [x] When player dies, have it respawn positions 
     - [x] Check that it area is free before spawning, or cheat by destroying whatever is at spawn position
     - [x] Player respawns when it dies
+- [ ] Update readme of polish pass and what would make the game fun
