@@ -45,5 +45,14 @@ namespace TankGame {
             
             return false;
         }
+        
+        
+        public bool HasAttemptedBomb(Tank tank) {
+            if (Input.GetButtonDown("Bomb")) {
+                return true;
+            }
+            
+            return false;
+        }
     }
 }

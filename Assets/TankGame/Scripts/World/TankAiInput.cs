@@ -119,5 +119,10 @@ namespace TankGame {
 
             return false;
         }
+
+
+        public bool HasAttemptedBomb(Tank tank) {
+            return false;
+        }
     }
 }

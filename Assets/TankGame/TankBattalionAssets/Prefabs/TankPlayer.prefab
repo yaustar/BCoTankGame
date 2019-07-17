@@ -53,9 +53,12 @@ MonoBehaviour:
   _animator: {fileID: 1705128543462396980}
   _bulletPrefab: {fileID: 6364090647265773742, guid: 2dd8eb4aeecfa4ec585c70a83c49dc8c,
     type: 3}
+  _bombPrefab: {fileID: 8032350311678742978, guid: 513ae9c6f3ca10d448671f98be9345ad,
+    type: 3}
   _bulletSpawnTransform: {fileID: 2576201858153201334}
   _maxSpeed: 4
   _gunReloadTimeSecs: 0.75
+  _bombReloadTimeSecs: 5
   _explosionStartedEvent:
     m_PersistentCalls:
       m_Calls: []

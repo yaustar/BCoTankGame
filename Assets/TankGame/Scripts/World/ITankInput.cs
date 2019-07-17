@@ -7,5 +7,6 @@ namespace TankGame {
         // Assume only 4 way direction
         Direction GetDirection(Tank tank);
         bool HasAttemptedFired(Tank tank);
+        bool HasAttemptedBomb(Tank tank);
     }
 }

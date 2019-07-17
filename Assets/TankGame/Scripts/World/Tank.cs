@@ -22,6 +22,9 @@ namespace TankGame {
         private GameObject _bulletPrefab;
         
         [SerializeField, BoxGroup("References")]
+        private GameObject _bombPrefab;
+
+        [SerializeField, BoxGroup("References")]
         private Transform _bulletSpawnTransform;
         
         [SerializeField, BoxGroup("Properties")]
@@ -30,6 +33,9 @@ namespace TankGame {
         [SerializeField, BoxGroup("Properties")]
         private float _gunReloadTimeSecs;
 
+        [SerializeField, BoxGroup("Properties")]
+        private float _bombReloadTimeSecs;
+        
         [SerializeField]
         private UnityEvent _explosionStartedEvent;
         
@@ -43,6 +49,7 @@ namespace TankGame {
         private bool _movingLastFrame = false;
         private Direction _facingDirection = Direction.Up;
         private float _secsTimeSinceGunFired = float.MaxValue;
+        private float _secsTimeSinceBombDropped = float.MaxValue;
         private bool _canMove = true;
 
         private Action<GameObject> _deadCallback;
@@ -52,7 +59,8 @@ namespace TankGame {
         // What happens when the tank dies if there are still bullets 
         // on the screen?
         private ObjectPool _bulletObjectPool;
-        
+        private ObjectPool _bombObjectPool;
+
         
         private void Awake() {
             _rigidbody2D = GetComponent<Rigidbody2D>();
@@ -61,89 +69,25 @@ namespace TankGame {
             _input = GetComponent<ITankInput>();
 
             _bulletObjectPool = new ObjectPool(_bulletPrefab, gameObject, 5);
+            _bombObjectPool = new ObjectPool(_bombPrefab, gameObject, 10);
         }
 
 
         private void Update() {
             _secsTimeSinceGunFired += Time.deltaTime;
-            
+            _secsTimeSinceBombDropped += Time.deltaTime;
+                
             if (_input != null && _canMove) {
-                var direction = _input.GetDirection(this);
-                var velocity = new Vector3();
-
-                
-                switch (direction) {
-                    case Direction.Down: {
-                        velocity.y = -1f;
-                        break;
-                    }
-                        
-                    case Direction.Up: {
-                        velocity.y = 1f;
-                        break;
-                    }
-                    
-                    case Direction.Left: {
-                        velocity.x = -1f;
-                        break;
-                    }
-                    
-                    case Direction.Right: {
-                        velocity.x = 1f;
-                        break;
-                    }
-                    
-                    default: break;
-                }
-
-                velocity *= _maxSpeed;
-                _rigidbody2D.velocity = velocity;
-                
-                if (direction != Direction.None) {
-                    if (!_movingLastFrame) {
-                        _animator.Play("Moving");
-                    }
-
-                    _facingDirection = direction;
-                    _movingLastFrame = true;
-                } else {
-                    if (_movingLastFrame) {
-                        _animator.Play("Idle");
-                    }
-                    
-                    _movingLastFrame = false;
-                }
-                
-                SetSpriteDirection(_facingDirection);
-                
-                if (_secsTimeSinceGunFired >= _gunReloadTimeSecs && _input.HasAttemptedFired(this)) {
-                    var bulletObj = _bulletObjectPool.GetObject();
-                    bulletObj.transform.SetParent(transform.parent);
-                    var bullet = bulletObj.GetComponent<Bullet>();
-                    bulletObj.transform.position = _bulletSpawnTransform.position;
-
-                    bulletObj.SetActive(true);
-                    
-                    bullet.Restart(_facingDirection, (GameObject obj) => {
-                        // Safety if tank is removed from the game for whatever reason
-                        // Tanks would be pool managed but just in case
-                        if (this == null) {
-                            Destroy(obj);
-                        } else {
-                            _bulletObjectPool.ReturnObject(obj);
-                        }
-                    });
-
-                    _secsTimeSinceGunFired = 0f;
-                }
+                UpdateMovement();
+                UpdateWeapons();
             }
 
             if (!_canMove) {
                 _rigidbody2D.velocity = Vector2.zero;
             }
         }
-        
-        
+
+
         // Public API
         public float GetReloadTimeSecs() {
             return _gunReloadTimeSecs;
@@ -184,6 +128,103 @@ namespace TankGame {
         
         
         // Private
+        private void UpdateMovement() {
+            var direction = _input.GetDirection(this);
+            var velocity = new Vector3();
+
+
+            switch (direction) {
+                case Direction.Down: {
+                    velocity.y = -1f;
+                    break;
+                }
+
+                case Direction.Up: {
+                    velocity.y = 1f;
+                    break;
+                }
+
+                case Direction.Left: {
+                    velocity.x = -1f;
+                    break;
+                }
+
+                case Direction.Right: {
+                    velocity.x = 1f;
+                    break;
+                }
+
+                default: break;
+            }
+
+            velocity *= _maxSpeed;
+            _rigidbody2D.velocity = velocity;
+
+            if (direction != Direction.None) {
+                if (!_movingLastFrame) {
+                    _animator.Play("Moving");
+                }
+
+                _facingDirection = direction;
+                _movingLastFrame = true;
+            } else {
+                if (_movingLastFrame) {
+                    _animator.Play("Idle");
+                }
+
+                _movingLastFrame = false;
+            }
+
+            SetSpriteDirection(_facingDirection);
+        }
+        
+        
+        private void UpdateWeapons() {
+            if (_secsTimeSinceGunFired >= _gunReloadTimeSecs && _input.HasAttemptedFired(this)) {
+                var bulletObj = _bulletObjectPool.GetObject();
+                bulletObj.transform.SetParent(transform.parent);
+                var bullet = bulletObj.GetComponent<Bullet>();
+                bulletObj.transform.position = _bulletSpawnTransform.position;
+
+                bulletObj.SetActive(true);
+
+                bullet.Restart(_facingDirection, (GameObject obj) => {
+                    // Safety if tank is removed from the game for whatever reason
+                    // Tanks would be pool managed but just in case
+                    if (this == null) {
+                        Destroy(obj);
+                    } else {
+                        _bulletObjectPool.ReturnObject(obj);
+                    }
+                });
+
+                _secsTimeSinceGunFired = 0f;
+            }
+            
+            
+            if (_secsTimeSinceBombDropped >= _bombReloadTimeSecs && _input.HasAttemptedBomb(this)) {
+                var bombObj = _bombObjectPool.GetObject();
+                bombObj.transform.SetParent(transform.parent);
+                var bomb = bombObj.GetComponent<Bomb>();
+                bombObj.transform.position = transform.position;
+
+                bombObj.SetActive(true);
+
+                bomb.Restart((GameObject obj) => {
+                    // Safety if tank is removed from the game for whatever reason
+                    // Tanks would be pool managed but just in case
+                    if (this == null) {
+                        Destroy(obj);
+                    } else {
+                        _bombObjectPool.ReturnObject(obj);
+                    }
+                });
+
+                _secsTimeSinceBombDropped = 0f;
+            }
+        }
+        
+        
         private void SetSpriteDirection(Direction direction) {
             var localRot = _spriteRoot.localEulerAngles;
             
