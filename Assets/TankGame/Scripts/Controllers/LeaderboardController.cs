@@ -59,7 +59,7 @@ namespace TankGame {
             const int MAX_ENTRIES = LeaderboardTableData.MAX_ENTRIES;
             
             var table = _leaderboardTableDataSvar.value.table;
-            table.Add(scoreEntry);
+            table.Add(new ScoreEntryData() {name = scoreEntry.name, score = scoreEntry.score});
             table.Sort();
             
             // Scores are sorted descending
