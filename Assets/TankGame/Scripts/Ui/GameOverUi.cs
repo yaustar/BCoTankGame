@@ -59,11 +59,13 @@ namespace TankGame {
 
         // Private 
         private void OnExit() {
-            var entry = new ScoreEntryData {name = _highScoreNameInputField.text, score = _playerScoreSvar.value};
+            if (_newHighScorePanelObj.activeSelf) {
+                var entry = new ScoreEntryData {name = _highScoreNameInputField.text, score = _playerScoreSvar.value};
 
-            _lastHighScoreEntryAchievedSvar.value = entry;
-            
-            _highScoreAchievedEvent.Invoke();
+                _lastHighScoreEntryAchievedSvar.value = entry;
+
+                _highScoreAchievedEvent.Invoke();
+            }
         }
     }
 }
