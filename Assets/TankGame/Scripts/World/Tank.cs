@@ -9,6 +9,8 @@ using UnityEngine.Tilemaps;
 using UnityEngine.UI;
 
 namespace TankGame {
+    [RequireComponent(typeof(Collider2D))]
+    [RequireComponent(typeof(Rigidbody2D))]
     public class Tank : MonoBehaviour, IGun, IDamagable {
         [SerializeField, BoxGroup("References")]
         private Transform _spriteRoot;
