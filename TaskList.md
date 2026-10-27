@@ -1,3 +1,5 @@
+Touch
+
 - [x] Add global scene for game and debug
 - [x] Create the basic game loop so we can transition from one scene to another
 - [x] Add high score controller in global 
